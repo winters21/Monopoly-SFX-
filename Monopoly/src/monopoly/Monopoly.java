@@ -18,6 +18,8 @@ public class Monopoly {
         // TODO code application logic here
         
         System.out.println("hello world!");
+        
+        //this is a comment
     }
     
 }
