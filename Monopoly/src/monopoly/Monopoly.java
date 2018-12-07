@@ -14,10 +14,6 @@ public class Monopoly {
         HUD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         HUD.setSize(850, 1000);
         HUD.setLayout(null);
-        
-        
-        //tweueioruhgouierjog
-        
 
            }
     
