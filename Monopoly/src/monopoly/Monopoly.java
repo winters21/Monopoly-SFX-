@@ -58,6 +58,33 @@ public class Monopoly {
         board.setBounds((1), (1), board.getPreferredSize().width, board.getPreferredSize().height);
         HUD.add(board);
 
+        JLabel[] player = new JLabel[4];
+        for (int playericon = 0; playericon < 4; playericon++) {
+            do {
+                String playericonInput = JOptionPane.showInputDialog("Choose your player piece");
+
+                int playericonInt = Integer.parseInt(playericonInput); // parsing
+                if (playericonInt < 1 || playericonInt > 6) {
+                    JOptionPane.showMessageDialog(null, "Please input a Valid Number"); //alerting of error, and loops
+                }
+            } while (playericonInt < 2 || playericonInt > 8);
+            switch (playericonInt) {
+                case 1:
+                    player[playericon].setIcon(new ImageIcon("images/players/piecebinder.png"));
+                case 2:
+                    player[playericon].setIcon(new ImageIcon("images/players/piecemouse.png"));
+                case 3:
+                    player[playericon].setIcon(new ImageIcon("images/players/piecesun.png"));
+                case 4:
+                    player[playericon].setIcon(new ImageIcon("images/players/piecephone.png"));
+                case 5:
+                    player[playericon].setIcon(new ImageIcon("images/players/piecesoccer.png"));
+                case 6:
+                    player[playericon].setIcon(new ImageIcon("images/players/piecepaint.png"));
+
+            }
+        }
+
         number = new JButton(num + "");
         number.setFont(new Font("Monospaced Plain", Font.PLAIN, 50));
         number.setBounds(1050, 10, 100, 100);
@@ -71,6 +98,7 @@ public class Monopoly {
         HUD.setVisible(true);
 
     }
+
     private static ActionListener action = (new ActionListener() {
         @Override
         public void actionPerformed(java.awt.event.ActionEvent e) {
