@@ -1,23 +1,18 @@
+/*
+MONOPOLY ASSIGNMENT
+By: Shawn, Chris, Gabe, and Bryce
 
+*/
 package monopoly;
 
-/**
- *
- * @author s405207
- */
 public class Monopoly {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        
-        System.out.println("hello world!");
-        
-        //this is a comment
+        //This is where Code will go
 
-        //this is another comment
     }
     
 }
