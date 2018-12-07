@@ -17,7 +17,7 @@ public class Monopoly {
         
         
         //tweueioruhgouierjog
-        gnmghhj
+        
 
            }
     
