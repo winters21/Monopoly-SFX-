@@ -5,7 +5,6 @@ ICS3U
  */
 package monopoly;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -84,6 +83,8 @@ public class Monopoly {
                     player[playericon] = new JLabel(new ImageIcon("images/players/piecepaint.png"));
 
             }
+            
+        HUD.add(player[playericon]);
         }
 
         number = new JButton(num + "");
