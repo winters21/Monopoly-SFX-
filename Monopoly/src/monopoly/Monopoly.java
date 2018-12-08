@@ -58,11 +58,11 @@ public class Monopoly {
         HUD.add(board);
 
         JLabel[] player = new JLabel[4];
-        
+
         for (int playericon = 0; playericon < 4; playericon++) {
-            int playericonInt=0;
+            int playericonInt = 0;
             do {
-                String playericonInput = JOptionPane.showInputDialog("Choose your player piece player " + (playericon+1));
+                String playericonInput = JOptionPane.showInputDialog("Choose your player piece player " + (playericon + 1));
                 playericonInt = Integer.parseInt(playericonInput); // parsing
                 if (playericonInt < 1 || playericonInt > 6) {
                     JOptionPane.showMessageDialog(null, "Please input a Valid Number"); //alerting of error, and loops
@@ -71,21 +71,30 @@ public class Monopoly {
             switch (playericonInt) {
                 case 1:
                     player[playericon] = new JLabel(new ImageIcon("images/players/piecebinder.png"));
+                    break;
                 case 2:
                     player[playericon] = new JLabel(new ImageIcon("images/players/piecemouse.png"));
+                    break;
                 case 3:
                     player[playericon] = new JLabel(new ImageIcon("images/players/piecesun.png"));
+                    break;
                 case 4:
                     player[playericon] = new JLabel(new ImageIcon("images/players/piecephone.png"));
+                    break;
                 case 5:
                     player[playericon] = new JLabel(new ImageIcon("images/players/piecesoccer.png"));
+                    break;
                 case 6:
                     player[playericon] = new JLabel(new ImageIcon("images/players/piecepaint.png"));
-
+                    break;
             }
-            
-        HUD.add(player[playericon]);
+
+            HUD.add(player[playericon]);
         }
+        player[0].setBounds((1200), (600), player[0].getPreferredSize().width, player[0].getPreferredSize().height);
+        player[1].setBounds((1300), (600), player[1].getPreferredSize().width, player[1].getPreferredSize().height);
+        player[2].setBounds((1400), (600), player[2].getPreferredSize().width, player[2].getPreferredSize().height);
+        player[3].setBounds((1500), (600), player[3].getPreferredSize().width, player[3].getPreferredSize().height);
 
         number = new JButton(num + "");
         number.setFont(new Font("Monospaced Plain", Font.PLAIN, 50));
