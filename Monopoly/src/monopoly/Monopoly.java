@@ -60,10 +60,11 @@ public class Monopoly {
 
         JLabel[] player = new JLabel[4];
         for (int playericon = 0; playericon < 4; playericon++) {
+            int playericonInt=0;
             do {
                 String playericonInput = JOptionPane.showInputDialog("Choose your player piece");
 
-                int playericonInt = Integer.parseInt(playericonInput); // parsing
+                playericonInt = Integer.parseInt(playericonInput); // parsing
                 if (playericonInt < 1 || playericonInt > 6) {
                     JOptionPane.showMessageDialog(null, "Please input a Valid Number"); //alerting of error, and loops
                 }
