@@ -59,29 +59,29 @@ public class Monopoly {
         HUD.add(board);
 
         JLabel[] player = new JLabel[4];
+        
         for (int playericon = 0; playericon < 4; playericon++) {
             int playericonInt=0;
             do {
-                String playericonInput = JOptionPane.showInputDialog("Choose your player piece");
-
+                String playericonInput = JOptionPane.showInputDialog("Choose your player piece player " + (playericon+1));
                 playericonInt = Integer.parseInt(playericonInput); // parsing
                 if (playericonInt < 1 || playericonInt > 6) {
                     JOptionPane.showMessageDialog(null, "Please input a Valid Number"); //alerting of error, and loops
                 }
-            } while (playericonInt < 2 || playericonInt > 8);
+            } while (playericonInt < 1 || playericonInt > 6);
             switch (playericonInt) {
                 case 1:
-                    player[playericon].setIcon(new ImageIcon("images/players/piecebinder.png"));
+                    player[playericon] = new JLabel(new ImageIcon("images/players/piecebinder.png"));
                 case 2:
-                    player[playericon].setIcon(new ImageIcon("images/players/piecemouse.png"));
+                    player[playericon] = new JLabel(new ImageIcon("images/players/piecemouse.png"));
                 case 3:
-                    player[playericon].setIcon(new ImageIcon("images/players/piecesun.png"));
+                    player[playericon] = new JLabel(new ImageIcon("images/players/piecesun.png"));
                 case 4:
-                    player[playericon].setIcon(new ImageIcon("images/players/piecephone.png"));
+                    player[playericon] = new JLabel(new ImageIcon("images/players/piecephone.png"));
                 case 5:
-                    player[playericon].setIcon(new ImageIcon("images/players/piecesoccer.png"));
+                    player[playericon] = new JLabel(new ImageIcon("images/players/piecesoccer.png"));
                 case 6:
-                    player[playericon].setIcon(new ImageIcon("images/players/piecepaint.png"));
+                    player[playericon] = new JLabel(new ImageIcon("images/players/piecepaint.png"));
 
             }
         }
