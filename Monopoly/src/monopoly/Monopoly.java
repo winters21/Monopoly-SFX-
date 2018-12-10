@@ -28,34 +28,6 @@ public class Monopoly {
         HUD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         HUD.setSize(1800, 1050);
         HUD.setLayout(null);
-        /*
-        String text = "rules.txt";
-        ProcessBuilder txtfile = new ProcessBuilder("Notepad.exe", text);
-
-        txtfile.start();
-        String[] spacetext = new String[41];
-        Integer[] space = new Integer[4];
-        Integer[] homes = new Integer[40];
-        Integer[][] owner = new Integer[40][4];
-
-        Integer[] money = new Integer[4];
-        Boolean[] bankrupt = new Boolean[4];
-        Boolean[][] bought = new Boolean[4][40];
-        
-        int i=1;
-
-        int reply = JOptionPane.showConfirmDialog(
-                null,
-                "Would you like to buy this?",
-                "You landed on " + spacetext[i],
-                JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-            
-        }
-         */
-        JLabel board = new JLabel();
-        board.setIcon(new ImageIcon("images/monopolyboard.jpg"));
-        board.setBounds((1), (1), board.getPreferredSize().width, board.getPreferredSize().height);
 
         for (int playericon = 0; playericon < 4; playericon++) {
             int playericonInt = 0;
@@ -103,7 +75,10 @@ public class Monopoly {
         newNum.setBounds(1200, 10, 100, 100);
         newNum.addActionListener(action);
         HUD.add(newNum);
-
+        
+        JLabel board = new JLabel();
+        board.setIcon(new ImageIcon("images/monopolyboard.jpg"));
+        board.setBounds((1), (1), board.getPreferredSize().width, board.getPreferredSize().height);
         HUD.add(board);
 
         HUD.setVisible(true);
