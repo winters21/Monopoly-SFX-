@@ -20,6 +20,8 @@ public class Monopoly {
     public static JButton number;
     public static JButton newNum;
     public static int num;
+    public static JLabel[] player = new JLabel[4];
+    public static Integer[] playerturn = new Integer[4];
 
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
@@ -32,9 +34,8 @@ public class Monopoly {
 
         txtfile.start();
         String[] spacetext = new String[41];
-        Integer[] space = new Integer[41];
+        Integer[] space = new Integer[4];
         Integer[] homes = new Integer[40];
-        Integer[] playerturn = new Integer[4];
         Integer[][] owner = new Integer[40][4];
 
         Integer[] money = new Integer[4];
@@ -55,9 +56,6 @@ public class Monopoly {
         JLabel board = new JLabel();
         board.setIcon(new ImageIcon("images/monopolyboard.jpg"));
         board.setBounds((1), (1), board.getPreferredSize().width, board.getPreferredSize().height);
-        HUD.add(board);
-
-        JLabel[] player = new JLabel[4];
 
         for (int playericon = 0; playericon < 4; playericon++) {
             int playericonInt = 0;
@@ -70,31 +68,31 @@ public class Monopoly {
             } while (playericonInt < 1 || playericonInt > 6);
             switch (playericonInt) {
                 case 1:
-                    player[playericon] = new JLabel(new ImageIcon("images/players/piecebinder.png"));
+                    player[playericon] = new JLabel(new ImageIcon("images/players/binderfix.png"));
                     break;
                 case 2:
-                    player[playericon] = new JLabel(new ImageIcon("images/players/piecemouse.png"));
+                    player[playericon] = new JLabel(new ImageIcon("images/players/mousefix.png"));
                     break;
                 case 3:
-                    player[playericon] = new JLabel(new ImageIcon("images/players/piecesun.png"));
+                    player[playericon] = new JLabel(new ImageIcon("images/players/sunfix.png"));
                     break;
                 case 4:
-                    player[playericon] = new JLabel(new ImageIcon("images/players/piecephone.png"));
+                    player[playericon] = new JLabel(new ImageIcon("images/players/phonefix.png"));
                     break;
                 case 5:
-                    player[playericon] = new JLabel(new ImageIcon("images/players/piecesoccer.png"));
+                    player[playericon] = new JLabel(new ImageIcon("images/players/soccerfix.png"));
                     break;
                 case 6:
-                    player[playericon] = new JLabel(new ImageIcon("images/players/piecepaint.png"));
+                    player[playericon] = new JLabel(new ImageIcon("images/players/paintfix.png"));
                     break;
             }
 
             HUD.add(player[playericon]);
         }
-        player[0].setBounds((900), (800), player[0].getPreferredSize().width, player[0].getPreferredSize().height);
-        player[1].setBounds((1300), (600), player[1].getPreferredSize().width, player[1].getPreferredSize().height);
-        player[2].setBounds((1400), (600), player[2].getPreferredSize().width, player[2].getPreferredSize().height);
-        player[3].setBounds((1500), (600), player[3].getPreferredSize().width, player[3].getPreferredSize().height);
+        player[0].setBounds((855), (875), player[0].getPreferredSize().width, player[0].getPreferredSize().height);
+        player[1].setBounds((895), (875), player[1].getPreferredSize().width, player[1].getPreferredSize().height);
+        player[2].setBounds((855), (925), player[2].getPreferredSize().width, player[2].getPreferredSize().height);
+        player[3].setBounds((895), (925), player[3].getPreferredSize().width, player[3].getPreferredSize().height);
 
         number = new JButton(num + "");
         number.setFont(new Font("Monospaced Plain", Font.PLAIN, 50));
@@ -106,6 +104,8 @@ public class Monopoly {
         newNum.addActionListener(action);
         HUD.add(newNum);
 
+        HUD.add(board);
+
         HUD.setVisible(true);
 
     }
@@ -115,6 +115,11 @@ public class Monopoly {
         public void actionPerformed(java.awt.event.ActionEvent e) {
             num = ((new Random()).nextInt((12 - 1) + 1) + 1);
             number.setText(num + "");
+            player[0].setBounds((765), (875), player[0].getPreferredSize().width, player[0].getPreferredSize().height);
+            player[1].setBounds((805), (875), player[1].getPreferredSize().width, player[1].getPreferredSize().height);
+            player[2].setBounds((765), (925), player[2].getPreferredSize().width, player[2].getPreferredSize().height);
+            player[3].setBounds((805), (925), player[3].getPreferredSize().width, player[3].getPreferredSize().height);
+
         }
     });
 }
