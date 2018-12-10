@@ -91,7 +91,7 @@ public class Monopoly {
 
             HUD.add(player[playericon]);
         }
-        player[0].setBounds((1200), (600), player[0].getPreferredSize().width, player[0].getPreferredSize().height);
+        player[0].setBounds((900), (800), player[0].getPreferredSize().width, player[0].getPreferredSize().height);
         player[1].setBounds((1300), (600), player[1].getPreferredSize().width, player[1].getPreferredSize().height);
         player[2].setBounds((1400), (600), player[2].getPreferredSize().width, player[2].getPreferredSize().height);
         player[3].setBounds((1500), (600), player[3].getPreferredSize().width, player[3].getPreferredSize().height);
