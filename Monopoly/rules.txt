@@ -4,7 +4,7 @@
 
         txtfile.start();
         String[] spacetext = new String[41];
-        Integer[] space = new Integer[4];
+        
         Integer[] homes = new Integer[40];
         Integer[][] owner = new Integer[40][4];
 
