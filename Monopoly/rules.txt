@@ -1,1 +1,24 @@
-hm
+        /*
+        String text = "rules.txt";
+        ProcessBuilder txtfile = new ProcessBuilder("Notepad.exe", text);
+
+        txtfile.start();
+        String[] spacetext = new String[41];
+        Integer[] space = new Integer[4];
+        Integer[] homes = new Integer[40];
+        Integer[][] owner = new Integer[40][4];
+
+        Integer[] money = new Integer[4];
+        Boolean[] bankrupt = new Boolean[4];
+        Boolean[][] bought = new Boolean[4][40];
+        
+        
+        int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Would you like to buy this?",
+                "You landed on " + spacetext[i],
+                JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            
+        }
+         */
