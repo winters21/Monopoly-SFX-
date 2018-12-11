@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Monopoly {
-    
+
     public static int player_num;
     public static JButton number;
     public static JButton newNum;
@@ -27,6 +27,7 @@ public class Monopoly {
     public static JLabel turn = new JLabel();
     public static Integer[] money = new Integer[4];
     public static JLabel[] moneyLabel = new JLabel[4];
+    public static String[] name = new String[4];
 
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
@@ -76,11 +77,6 @@ public class Monopoly {
         number.setBounds(1050, 10, 100, 100);
         HUD.add(number);
 
-        newNum = new JButton("ROLL");
-        newNum.setBounds(1200, 10, 100, 100);
-        newNum.addActionListener(action);
-        HUD.add(newNum);
-
         turn.setText("Player " + (playerturn + 1) + "'s turn");
         turn.setFont(new Font("Monospaced Plain", Font.PLAIN, 50));
         turn.setBounds(1350, 10, 1000, 100);
@@ -93,30 +89,51 @@ public class Monopoly {
 
         HUD.setVisible(true);
 
-        //turn.setText("Player " + (playerturn + 1) + "'s turn");
+        while (true) {
+            String[] options = {"Roll", "def", "ghi", "jkl"};
+            int x = JOptionPane.showOptionDialog(null, "What would you like to do?",
+                    "Click a button",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            switch (x) {
+                case 0:
+                    moverMethod();
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                //turn.setText( name[playerturn] + "'s turn");
+            }
+
+        }
+    
     }
+    
+        public static void moverMethod(){
 
-    private static ActionListener action = (new ActionListener() {
-        @Override
-        public void actionPerformed(java.awt.event.ActionEvent e) {
-            //  num = ((new Random()).nextInt((12 - 1) + 1) + 1);
-           // num = 1;
-           String numInput = JOptionPane.showInputDialog("input num");
-                space[playerturn] = Integer.parseInt(numInput); // parsing
+        //  num = ((new Random()).nextInt((12 - 1) + 1) + 1);
+        // num = 1;
+        String numInput = JOptionPane.showInputDialog("input num");
+        space[playerturn] = Integer.parseInt(numInput); // parsing
 
-            //number.setText(num + "");
-            //JOptionPane.showMessageDialog(null, "You rolled " + num);
-            //space[playerturn] += num;
+        //number.setText(num + "");
+        //JOptionPane.showMessageDialog(null, "You rolled " + num);
+        //space[playerturn] += num;
+        do {
             if (space[playerturn] >= 40) {
                 space[playerturn] -= 40;
             }
-            spacemaker();
-            //playerturn++;
-           // if (playerturn == 4) {
-                playerturn = 0;
-          //  }
-        }
-    });
+        } while (space[playerturn] >= 40);
+        spacemaker();
+        //playerturn++;
+        // if (playerturn == 4) {
+        //playerturn = 0;
+        //  }
+    }
 
     public static void spacemaker() {
         switch (playerturn) {
@@ -494,7 +511,7 @@ public class Monopoly {
                 break;
             case 3:
                 switch (space[playerturn]) {
-                   case 0:
+                    case 0:
                         player[playerturn].setBounds((855), (875), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 1:
