@@ -67,6 +67,11 @@ public class Monopoly {
 
             HUD.add(player[playericon]);
         }
+        
+        for (int i = 0; i < 4; i++) {
+            moneyLabel[i].setText(moneyLabel[i].getText() + money[i]);
+        }
+        
         player[0].setBounds((855), (875), player[0].getPreferredSize().width, player[0].getPreferredSize().height);
         player[1].setBounds((895), (875), player[1].getPreferredSize().width, player[1].getPreferredSize().height);
         player[2].setBounds((855), (925), player[2].getPreferredSize().width, player[2].getPreferredSize().height);
