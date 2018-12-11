@@ -8,7 +8,7 @@
         Integer[] homes = new Integer[40];
         Integer[][] owner = new Integer[40][4];
 
-        Integer[] money = new Integer[4];
+        
         Boolean[] bankrupt = new Boolean[4];
         Boolean[][] bought = new Boolean[4][40];
         

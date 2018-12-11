@@ -25,6 +25,8 @@ public class Monopoly {
     public static int playerturn = 0;
     public static int[] space = new int[4];
     public static JLabel turn = new JLabel();
+    public static Integer[] money = new Integer[4];
+    public static JLabel[] moneyLabel = new JLabel[4];
 
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
