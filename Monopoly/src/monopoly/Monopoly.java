@@ -90,7 +90,7 @@ public class Monopoly {
         HUD.setVisible(true);
 
         while (true) {
-            String[] options = {"Roll", "def", "ghi", "jkl"};
+            String[] options = {"Roll", "def", "ghi", "quit"};
             int x = JOptionPane.showOptionDialog(null, "What would you like to do?",
                     "Click a button",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
@@ -108,18 +108,13 @@ public class Monopoly {
                     break;
                 //turn.setText( name[playerturn] + "'s turn");
             }
-
         }
-    
     }
-    
         public static void moverMethod(){
-
         //  num = ((new Random()).nextInt((12 - 1) + 1) + 1);
         // num = 1;
         String numInput = JOptionPane.showInputDialog("input num");
         space[playerturn] = Integer.parseInt(numInput); // parsing
-
         //number.setText(num + "");
         //JOptionPane.showMessageDialog(null, "You rolled " + num);
         //space[playerturn] += num;
@@ -170,37 +165,37 @@ public class Monopoly {
                         player[playerturn].setBounds((145), (875), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 10:
-                        player[playerturn].setBounds((18), (865), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((18), (855), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 11:
-                        player[playerturn].setBounds((19), (790), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((18), (790), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 12:
-                        player[playerturn].setBounds((19), (735), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((18), (735), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 13:
-                        player[playerturn].setBounds((19), (660), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((18), (660), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 14:
-                        player[playerturn].setBounds((19), (580), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((18), (580), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 15:
-                        player[playerturn].setBounds((19), (505), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((18), (505), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 16:
-                        player[playerturn].setBounds((19), (430), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((18), (430), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 17:
-                        player[playerturn].setBounds((19), (355), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((18), (355), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 18:
-                        player[playerturn].setBounds((19), (280), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((18), (280), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 19:
-                        player[playerturn].setBounds((19), (205), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((18), (205), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 20:
-                        player[playerturn].setBounds((19), (115), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((18), (115), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 21:
                         player[playerturn].setBounds((185), (100), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
