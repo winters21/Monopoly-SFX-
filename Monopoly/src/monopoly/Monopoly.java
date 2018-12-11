@@ -116,14 +116,16 @@ public class Monopoly {
     }
 
     public static void moverMethod() {
-        //  num = ((new Random()).nextInt((12 - 1) + 1) + 1);
-        num = 1;
+         num = ((new Random()).nextInt((12 - 1) + 1) + 1);
         number.setText(num + "");
-        //JOptionPane.showMessageDialog(null, "You rolled " + num);
+        JOptionPane.showMessageDialog(null, "You rolled " + num);
         space[playerturn] += num;
         do {
             if (space[playerturn] >= 40) {
                 space[playerturn] -= 40;
+                JOptionPane.showMessageDialog(null, "You passed go, collect $200");
+                money[playerturn] += 200;
+                moneyLabel[playerturn].setText(money[playerturn] + "");
             }
         } while (space[playerturn] >= 40);
         spacemaker();
