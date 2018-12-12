@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 
 public class Monopoly {
 
-    public static int player_num;
     public static JButton number;
     public static JButton newNum;
     public static int num;
@@ -35,53 +34,57 @@ public class Monopoly {
         HUD.setSize(1800, 1050);
         HUD.setLayout(null);
 
+        for (int nameInput = 0; nameInput < 4; nameInput++) {
+            name[nameInput] = JOptionPane.showInputDialog("What is your name Player " + (nameInput + 1));
+        }
         for (int playericon = 0; playericon < 4; playericon++) {
-            int playericonInt = 0;
-            do {
-                String playericonInput = JOptionPane.showInputDialog("Choose your player piece player " + (playericon + 1));
-                playericonInt = Integer.parseInt(playericonInput); // parsing
-                if (playericonInt < 1 || playericonInt > 6) {
-                    JOptionPane.showMessageDialog(null, "Please input a Valid Number"); //alerting of error, and loops
-                }
-            } while (playericonInt < 1 || playericonInt > 6);
-            switch (playericonInt) {
-                case 1:
+            String[] options = {"Binder", "Mouse", "Sun G.'s", "Phone", "Soccer", "Paint"};
+            int iconchoice = JOptionPane.showOptionDialog(null, "Choose a playerpiece " + name[playericon],
+                    "Click a button",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            switch (iconchoice) {
+                case 0:
                     player[playericon] = new JLabel(new ImageIcon("images/players/binderfix.png"));
                     break;
-                case 2:
+                case 1:
                     player[playericon] = new JLabel(new ImageIcon("images/players/mousefix.png"));
                     break;
-                case 3:
+                case 2:
                     player[playericon] = new JLabel(new ImageIcon("images/players/sunfix.png"));
                     break;
-                case 4:
+                case 3:
                     player[playericon] = new JLabel(new ImageIcon("images/players/phonefix.png"));
                     break;
-                case 5:
+                case 4:
                     player[playericon] = new JLabel(new ImageIcon("images/players/soccerfix.png"));
                     break;
-                case 6:
+                case 5:
                     player[playericon] = new JLabel(new ImageIcon("images/players/paintfix.png"));
                     break;
             }
-
             HUD.add(player[playericon]);
         }
-
-        //for (int i = 0; i < 4; i++) {
-        //moneyLabel[i].setText(moneyLabel[i].getText() + money[i]);
-        //  }
         player[0].setBounds((855), (875), player[0].getPreferredSize().width, player[0].getPreferredSize().height);
         player[1].setBounds((895), (875), player[1].getPreferredSize().width, player[1].getPreferredSize().height);
         player[2].setBounds((855), (925), player[2].getPreferredSize().width, player[2].getPreferredSize().height);
         player[3].setBounds((895), (925), player[3].getPreferredSize().width, player[3].getPreferredSize().height);
+
+        for (int moneyicon = 0; moneyicon < 4; moneyicon++) {
+            moneyLabel[moneyicon] = new JLabel(name[moneyicon] + "'s money: $" + money[moneyicon] + "");
+            moneyLabel[moneyicon].setFont(new Font("Monospaced Plain", Font.PLAIN, 35));
+            HUD.add(moneyLabel[moneyicon]);
+        }
+        moneyLabel[0].setBounds(1350, 110, 1000, 100);
+        moneyLabel[1].setBounds(1350, 210, 1000, 100);
+        moneyLabel[2].setBounds(1350, 310, 1000, 100);
+        moneyLabel[3].setBounds(1350, 410, 1000, 100);
 
         number = new JButton(num + "");
         number.setFont(new Font("Monospaced Plain", Font.PLAIN, 50));
         number.setBounds(1050, 10, 100, 100);
         HUD.add(number);
 
-        turn.setText("Player " + (playerturn + 1) + "'s turn");
+        turn.setText(name[playerturn] + "'s turn");
         turn.setFont(new Font("Monospaced Plain", Font.PLAIN, 50));
         turn.setBounds(1350, 10, 1000, 100);
         HUD.add(turn);
@@ -110,13 +113,13 @@ public class Monopoly {
                     break;
                 case 4:
                     break;
-                //turn.setText( name[playerturn] + "'s turn");
             }
+            turn.setText(name[playerturn] + "'s turn");
         }
     }
 
     public static void moverMethod() {
-         num = ((new Random()).nextInt((12 - 1) + 1) + 1);
+        num = ((new Random()).nextInt((12 - 1) + 1) + 1);
         number.setText(num + "");
         JOptionPane.showMessageDialog(null, "You rolled " + num);
         space[playerturn] += num;
@@ -125,7 +128,7 @@ public class Monopoly {
                 space[playerturn] -= 40;
                 JOptionPane.showMessageDialog(null, "You passed go, collect $200");
                 money[playerturn] += 200;
-                moneyLabel[playerturn].setText(money[playerturn] + "");
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
             }
         } while (space[playerturn] >= 40);
         spacemaker();
@@ -477,7 +480,7 @@ public class Monopoly {
                     case 29:
                         player[playerturn].setBounds((765), (75), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
-                  case 30:
+                    case 30:
                         player[playerturn].setBounds((875), (75), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 31:
