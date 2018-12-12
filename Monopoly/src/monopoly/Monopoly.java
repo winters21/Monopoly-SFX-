@@ -102,7 +102,7 @@ public class Monopoly {
         while (true) {
             String[] options = {"Roll", "Buy", "blank", "quit"};
             int x = JOptionPane.showOptionDialog(null, "What would you like to do?",
-                    "Click a button",
+                    name[playerturn],
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
             switch (x) {
                 case 0:
