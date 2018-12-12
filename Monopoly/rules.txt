@@ -6,11 +6,11 @@
         String[] spacetext = new String[41];
         
         Integer[] homes = new Integer[40];
-        Integer[][] owner = new Integer[40][4];
+        Integer[][] owner = new Integer[40];
 
         
         Boolean[] bankrupt = new Boolean[4];
-        Boolean[][] bought = new Boolean[4][40];
+        Boolean[][] bought = new Boolean[40];
         
         
         int reply = JOptionPane.showConfirmDialog(
