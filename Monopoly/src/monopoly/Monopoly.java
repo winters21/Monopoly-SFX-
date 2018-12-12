@@ -22,7 +22,7 @@ public class Monopoly {
     public static JLabel[] player = new JLabel[4];
     public static int playerturn = 0;
     public static int[] space = new int[4];
-    public static String[] spacename = {"Go!", "Mr. Royko's Room", "Ms. Dale's Room"};
+        public static String[] spacename = {"Go!", "Mr. Royko's Room","Community Chest", "Ms. Dale's Room", "Student Fee", "Retaj", "Ms. Brook's Room", "Chance", "Mr. Blank's Room", "Mr. Loy's Room", "Jail/Just Visiting", "Mr. Ketcheson's Room", "Cafeteria", "Ms. Turnbulll's Room", "Mr. Yemensky's Room", "Subway", "Ms. Galveals' Room", "Community Chest", "Mr. Lahey's Room", "Ms. Andreoli's Room", "Hall Pass", "Mr. McKee's Room", "Chance Card", "Ms. Egan's Room", "Mr. Baar's Room", "DQ", "Mr. Thompson's Room", "Ms. Miri's Room", "Learning Commons", "Mr. Scerbo's Room", "Go to Detention", "Ms. Sipes' Room", "Mrs. Gibson's Room", "Community Chest", "Ms. Ramsay's Room", "Gabriel's Pizza", "Chance", "Mr. Blakely's Room", "Field Trip", "Mr. Schwartz's Room"};
 
     public static JLabel turn = new JLabel();
     public static Integer[] money = {1500, 1500, 1500, 1500};
