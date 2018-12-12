@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 
 public class Monopoly {
 
+    public static boolean buying = false;
     public static JButton number;
     public static JButton newNum;
     public static int num;
@@ -97,7 +98,7 @@ public class Monopoly {
         HUD.setVisible(true);
 
         while (true) {
-            String[] options = {"Roll", "blank", "blank", "quit"};
+            String[] options = {"Roll", "Buy", "blank", "quit"};
             int x = JOptionPane.showOptionDialog(null, "What would you like to do?",
                     "Click a button",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
@@ -106,6 +107,8 @@ public class Monopoly {
                     moverMethod();
                     break;
                 case 1:
+                    Money();
+                    buying = true;
                     break;
                 case 2:
                     break;
@@ -119,7 +122,9 @@ public class Monopoly {
     }
     
     public static void Money() {
-        
+        if (buying = true) {
+            
+        }
     }
 
     public static void moverMethod() {
