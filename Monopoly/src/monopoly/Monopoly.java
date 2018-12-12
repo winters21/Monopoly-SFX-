@@ -136,11 +136,6 @@ public class Monopoly {
         spaceLanded();
         
         
-        
-        
-        
-        
-        
         playerturn += 1;
         if (playerturn == 4) {
             playerturn = 0;
