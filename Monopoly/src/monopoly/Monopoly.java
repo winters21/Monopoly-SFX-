@@ -31,6 +31,7 @@ public class Monopoly {
     public static String[] name = new String[4];
 
     public static void main(String[] args) throws IOException {
+        int count = 0;
         JFrame HUD = new JFrame();
         HUD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         HUD.setSize(1800, 1050);
@@ -108,8 +109,10 @@ public class Monopoly {
                     moverMethod();
                     break;
                 case 1:
-                    money();
-                    buying = true;
+                    if (count >= 1) {
+                        money();
+                        buying = true;
+                    }
                     break;
                 case 2:
                     break;
@@ -119,12 +122,14 @@ public class Monopoly {
                     break;
             }
             turn.setText(name[playerturn] + "'s turn");
+            count++;
         }
     }
+
     public static void areaCost() {
-        
+
     }
-    
+
     public static void money() {
         if (buying = true) {
             //money = money - 
