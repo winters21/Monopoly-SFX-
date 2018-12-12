@@ -117,6 +117,10 @@ public class Monopoly {
             turn.setText(name[playerturn] + "'s turn");
         }
     }
+    
+    public static void Money() {
+        
+    }
 
     public static void moverMethod() {
         num = ((new Random()).nextInt((12 - 1) + 1) + 1);
