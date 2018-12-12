@@ -123,11 +123,12 @@ public class Monopoly {
     
     public static void Money() {
         if (buying = true) {
-            
+            //money = money - 
         }
     }
 
     public static void moverMethod() {
+        int place = 0;
         num = ((new Random()).nextInt((12 - 1) + 1) + 1);
         number.setText(num + "");
         JOptionPane.showMessageDialog(null, "You rolled " + num);
@@ -140,14 +141,14 @@ public class Monopoly {
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
             }
         } while (space[playerturn] >= 40);
-        spacemaker();
+        spacemaker(place);
         playerturn += 1;
         if (playerturn == 4) {
             playerturn = 0;
         }
     }
 
-    public static void spacemaker() {
+    public static void spacemaker(int place) {
         switch (playerturn) {
             case 0:
                 switch (space[playerturn]) {
