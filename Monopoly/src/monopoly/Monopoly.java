@@ -108,7 +108,7 @@ public class Monopoly {
                     moverMethod();
                     break;
                 case 1:
-                    Money();
+                    money();
                     buying = true;
                     break;
                 case 2:
@@ -121,8 +121,11 @@ public class Monopoly {
             turn.setText(name[playerturn] + "'s turn");
         }
     }
+    public static void areaCost() {
+        
+    }
     
-    public static void Money() {
+    public static void money() {
         if (buying = true) {
             //money = money - 
         }
