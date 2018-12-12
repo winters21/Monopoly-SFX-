@@ -6,7 +6,6 @@ ICS3U
 package monopoly;
 
 import java.awt.Font;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Random;
 import javax.swing.ImageIcon;
@@ -100,10 +99,10 @@ public class Monopoly {
 
         while (true) {
             String[] options = {"Roll", "blank", "blank", "blank"};
-            int x = JOptionPane.showOptionDialog(null, "What would you like to do?",
+            int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do?",
                     name[playerturn],
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-            switch (x) {
+            switch (menuchoice) {
                 case 0:
                     moverMethod();
                     break;
@@ -133,8 +132,8 @@ public class Monopoly {
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
             }
         } while (space[playerturn] >= 40);
-        spacemaker();
-        buyingMethod();
+        spaceMaker();
+        spaceLanded();
         
         
         
@@ -147,15 +146,26 @@ public class Monopoly {
             playerturn = 0;
         }
     }
-        public static void buyingMethod(){
-        if (space[playerturn] == junwf){
+        public static void spaceLanded(){
             JOptionPane.showMessageDialog(null, name[playerturn] +", you landed on " + spacename[space[playerturn]]);
-        }
+            switch (space[playerturn]) {
+                case 0:
+                    moverMethod();
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+            }
 }
 
     
     
-    public static void spacemaker() {
+    public static void spaceMaker() {
         switch (playerturn) {
             case 0:
                 switch (space[playerturn]) {
