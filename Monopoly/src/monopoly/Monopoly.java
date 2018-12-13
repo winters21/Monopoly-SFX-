@@ -120,7 +120,7 @@ public class Monopoly {
     }
 
     public static void moverMethod() {
-        num = ((new Random()).nextInt((12 - 1) + 1) + 1);
+        num = ((new Random()).nextInt((12 - 2) + 1) + 2);
         number.setText(num + "");
         JOptionPane.showMessageDialog(null, "You rolled " + num);
         space[playerturn] += num;
@@ -175,30 +175,37 @@ public class Monopoly {
     }
 
     public static void landedOnGo() {
+        JOptionPane.showMessageDialog(null, "GO");
 
     }
 
     public static void landedOnChance() {
+        JOptionPane.showMessageDialog(null, "Chance");
 
     }
 
     public static void landedOnCChest() {
+        JOptionPane.showMessageDialog(null, "CChest");
 
     }
 
     public static void landedOnPay() {
+        JOptionPane.showMessageDialog(null, "Pay");
 
     }
 
     public static void landedOnGoTo() {
+        JOptionPane.showMessageDialog(null, "JAIL");
 
     }
 
     public static void landedOnRelax() {
+        JOptionPane.showMessageDialog(null, "Relax");
 
     }
 
     public static void landedOnProperty() {
+        JOptionPane.showMessageDialog(null, "Property");
 
     }
 
