@@ -181,12 +181,12 @@ public class Monopoly {
     }
 
     public static void landedOnChance() {
-        JOptionPane.showMessageDialog(null, "Chance");
+        JOptionPane.showMessageDialog(null, "You landed on a Chance Card");
 
     }
 
     public static void landedOnCChest() {
-        JOptionPane.showMessageDialog(null, "CChest");
+        JOptionPane.showMessageDialog(null, "You landed on a Community Chest Card");
 
     }
 
