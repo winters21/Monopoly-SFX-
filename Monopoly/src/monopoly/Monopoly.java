@@ -36,12 +36,12 @@ public class Monopoly {
         HUD.setLayout(null);
 
         for (int nameInput = 0; nameInput < 4; nameInput++) {
-            name[nameInput] = JOptionPane.showInputDialog("What is your name Player " + (nameInput + 1));
+            name[nameInput] = JOptionPane.showInputDialog("What is your name, Player " + (nameInput + 1) + "?");
         }
         for (int playericon = 0; playericon < 4; playericon++) {
             String[] options = {"Binder", "Mouse", "Sun G.'s", "Phone", "Soccer", "Paint"};
-            int iconchoice = JOptionPane.showOptionDialog(null, "Choose a playerpiece " + name[playericon],
-                    "Click a button",
+            int iconchoice = JOptionPane.showOptionDialog(null, "Choose a player piece, " + name[playericon] + ".",
+                    "Click a button and choose your player piece.",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
             switch (iconchoice) {
                 case 0:
@@ -71,7 +71,7 @@ public class Monopoly {
         player[3].setBounds((895), (925), player[3].getPreferredSize().width, player[3].getPreferredSize().height);
 
         for (int moneyicon = 0; moneyicon < 4; moneyicon++) {
-            moneyLabel[moneyicon] = new JLabel(name[moneyicon] + "'s money: $" + money[moneyicon] + "");
+            moneyLabel[moneyicon] = new JLabel(name[moneyicon] + "'s bank account: $" + money[moneyicon] + "");
             moneyLabel[moneyicon].setFont(new Font("Monospaced Plain", Font.PLAIN, 35));
             HUD.add(moneyLabel[moneyicon]);
         }
@@ -127,7 +127,7 @@ public class Monopoly {
         do {
             if (space[playerturn] >= 40) {
                 space[playerturn] -= 40;
-                JOptionPane.showMessageDialog(null, "You passed go, collect $200");
+                JOptionPane.showMessageDialog(null, "You passed GO, collect $200");
                 money[playerturn] += 200;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
             }
@@ -142,7 +142,7 @@ public class Monopoly {
     }
 
     public static void spaceLanded() {
-        JOptionPane.showMessageDialog(null, name[playerturn] + ", you landed on " + spacename[space[playerturn]]);
+        JOptionPane.showMessageDialog(null, name[playerturn] + ", you landed on " + spacename[space[playerturn]] + ".");
         switch (space[playerturn]) {
             case 0:
                 landedOnGo();
