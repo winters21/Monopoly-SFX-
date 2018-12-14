@@ -23,12 +23,14 @@ public class Monopoly {
     public static int playerturn = 0;
     public static int[] space = new int[4];
     public static String[] spacename = {"Go!", "Mr. Royko's Room", "Community Chest", "Ms. Dale's Room", "Student Fee", "Retaj", "Ms. Brooks' Room", "Chance", "Mr. Blank's Room", "Mr. Loy's Room", "Jail/Just Visiting", "Mr. Ketcheson's Room", "Cafeteria", "Ms. Turnbulll's Room", "Mr. Yemensky's Room", "Subway", "Ms. Galveals' Room", "Community Chest", "Mr. Lahey's Room", "Ms. Andreoli's Room", "Hall Pass", "Mr. McKee's Room", "Chance Card", "Ms. Egan's Room", "Mr. Baar's Room", "DQ", "Mr. Thompson's Room", "Ms. Miri's Room", "Learning Commons", "Mr. Scerbo's Room", "Go to Detention", "Ms. Sipes' Room", "Mrs. Gibson's Room", "Community Chest", "Ms. Ramsay's Room", "Gabriel's Pizza", "Chance", "Mr. Blakely's Room", "Field Trip", "Mr. Schwartz's Room"};
-    public static String[] chanceCards = {"Advance to 'Go', Collect $200", "Advance to Mrs. Egan’s Religion. If you pass “Go”, collect $200.", "Advance to Mr. Ketcheson’s Visual Arts. If you pass Go, collect $200.", "Advance your player piece to nearest Lunch Hangout Area. If unowned, you may buy it from the RBC. If owned, throw dice and pay owner a total 10 times the amount thrown.", "Advance your player piece to the nearest Plaza Restaurant and pay owner twice the rental to which he/she is otherwise entitled. If the Plaza Restaurant is unowned, you may buy it from the RBC.","RBC pays you the $50 your parents put into your account.","Get out of Detention Free Card. This card may be kept until needed, or traded/sold.","Go back Three (3) tiles.", "You got caught skipping! Go to Detention. . . directly to Detention! Do not pass “Go”, do not collect $200.", "Out of rage because of a bad grade, you accidentally broke stuff at all your property sites! For each house pay $25, For each hotel pay $100.", "Mr. Adams’ charming voice forces you to buy pizza! You pay $15 worth of pizza.","Take your time at lunch to go to the plaza’s Retaj. If you pass Go, collect $200.","Time to play BINGO. Advance your player piece to Mr. Schwartz’s Tech.","You have been elected as the Student Council President. Pay each player $50.", "You somehow find a jackpot of money under your couch?! Collect $150.", "You have won a contest of sorts. Collect $100."};
-    public static String[] ccCards = {"Advance to \"Go\", Collect $200","RBC withdrawal error in your favor. Collect $200.","You stand on a stool in drama class but fall. Your friends will probably make fun of you for quite some time. Pay hospital fee of $50.","Sold baked good at the cafeteria, you got $50.","Get out of Detention Free Card. This card may be kept until needed, or traded/sold.","You got caught skipping! Go to Detention. . . directly to Detention! Do not pass “Go”, do not collect $200.","Elf Auction! Collect $50 from every player for the entry tickets.","Coyote Prowl! Receive $100 for putting on a good show.","You asked your parents for money. They were feeling generous and gave you a bit extra. Collect $20.","It is your birthday, everyone in your class sings “Happy Birthday” out of tune. Collect $10 from every player.","A student was low-riding to a point where they gave away their Gucci belt, and gave it to you. You sell it because brands don’t mean anything. Collect $100 ","You want to purchase a school hoodie to show off your Coyote Spirit! Pay $50. ","At the elf auction, you got into a bid battle and won. On the negative side, you battled for quite a while. Pay $50.", "You tutor a student and they pay you out of generosity. Receive $25.", "You connect to the bluetooth speaker at every property site you own and play Youtube Rewind 2018, wasn’t a bright idea… Pay $40 per house and $115 per hotel you own.", "Your grandparent slips you some money when your parents wouldn't. Receive $100."};
+    public static String[] chanceCards = {"Advance to 'Go', Collect $200", "Advance to Mrs. Egan’s Religion. If you pass “Go”, collect $200.", "Advance to Mr. Ketcheson’s Visual Arts. If you pass Go, collect $200.", "Advance your player piece to nearest Lunch Hangout Area. If unowned, you may buy it from the RBC. If owned, throw dice and pay owner a total 10 times the amount thrown.", "Advance your player piece to the nearest Plaza Restaurant and pay owner twice the rental to which he/she is otherwise entitled. If the Plaza Restaurant is unowned, you may buy it from the RBC.", "RBC pays you the $50 your parents put into your account.", "Get out of Detention Free Card. This card may be kept until needed, or traded/sold.", "Go back Three (3) tiles.", "You got caught skipping! Go to Detention. . . directly to Detention! Do not pass “Go”, do not collect $200.", "Out of rage because of a bad grade, you accidentally broke stuff at all your property sites! For each house pay $25, For each hotel pay $100.", "Mr. Adams’ charming voice forces you to buy pizza! You pay $15 worth of pizza.", "Take your time at lunch to go to the plaza’s Retaj. If you pass Go, collect $200.", "Time to play BINGO. Advance your player piece to Mr. Schwartz’s Tech.", "You have been elected as the Student Council President. Pay each player $50.", "You somehow find a jackpot of money under your couch?! Collect $150.", "You have won a contest of sorts. Collect $100."};
+    public static String[] ccCards = {"Advance to \"Go\", Collect $200", "RBC withdrawal error in your favor. Collect $200.", "You stand on a stool in drama class but fall. Your friends will probably make fun of you for quite some time. Pay hospital fee of $50.", "Sold baked good at the cafeteria, you got $50.", "Get out of Detention Free Card. This card may be kept until needed, or traded/sold.", "You got caught skipping! Go to Detention. . . directly to Detention! Do not pass “Go”, do not collect $200.", "Elf Auction! Collect $50 from every player for the entry tickets.", "Coyote Prowl! Receive $100 for putting on a good show.", "You asked your parents for money. They were feeling generous and gave you a bit extra. Collect $20.", "It is your birthday, everyone in your class sings “Happy Birthday” out of tune. Collect $10 from every player.", "A student was low-riding to a point where they gave away their Gucci belt, and gave it to you. You sell it because brands don’t mean anything. Collect $100 ", "You want to purchase a school hoodie to show off your Coyote Spirit! Pay $50. ", "At the elf auction, you got into a bid battle and won. On the negative side, you battled for quite a while. Pay $50.", "You tutor a student and they pay you out of generosity. Receive $25.", "You connect to the bluetooth speaker at every property site you own and play Youtube Rewind 2018, wasn’t a bright idea… Pay $40 per house and $115 per hotel you own.", "Your grandparent slips you some money when your parents wouldn't. Receive $100."};
     public static JLabel turn = new JLabel();
     public static Integer[] money = {1500, 1500, 1500, 1500};
     public static JLabel[] moneyLabel = new JLabel[4];
     public static String[] name = new String[4];
+    public static Integer[] deckChance = new Integer[16];
+    public static Integer[] deckChest = new Integer[16];
 
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
@@ -37,8 +39,14 @@ public class Monopoly {
         HUD.setLayout(null);
 
         for (int nameInput = 0; nameInput < 4; nameInput++) {
-            name[nameInput] = JOptionPane.showInputDialog("What is your name Player " + (nameInput + 1));
-        }
+            do {
+            name[nameInput] = JOptionPane.showInputDialog("What is your name Player " + (nameInput + 1) + " (12 Characters Max)");
+            if ((name[nameInput].length() > 12) || (name[nameInput].length() == 0)){
+                JOptionPane.showMessageDialog(null, "Please input a valid name");
+            }
+            } while((name[nameInput].length() > 12) || (name[nameInput].length() == 0));
+        
+            }
         for (int playericon = 0; playericon < 4; playericon++) {
             String[] options = {"Binder", "Mouse", "Sun G.'s", "Phone", "Soccer", "Paint"};
             int iconchoice = JOptionPane.showOptionDialog(null, "Choose a playerpiece " + name[playericon],
@@ -176,7 +184,7 @@ public class Monopoly {
     }
 
     public static void landedOnGo() {
-        JOptionPane.showMessageDialog(null, "GO");
+        JOptionPane.showMessageDialog(null, "GO, time to relax!");
 
     }
 
@@ -191,17 +199,26 @@ public class Monopoly {
     }
 
     public static void landedOnPay() {
-        JOptionPane.showMessageDialog(null, "Pay");
-
+        switch (space[playerturn]) {
+            case 4:
+                JOptionPane.showMessageDialog(null, "Please Pay 200 for a Student Fee");
+                money[playerturn] -= 200;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                break;
+            case 38:
+                JOptionPane.showMessageDialog(null, "FIELD TRIP!!! Pay 100");
+                money[playerturn] -= 100;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                break;
+        }
     }
-
     public static void landedOnGoTo() {
-        JOptionPane.showMessageDialog(null, "JAIL");
+        JOptionPane.showMessageDialog(null, "GO TO JAIL, DO NOT PASS GO, DO NOT COLLECT 200");
 
     }
 
     public static void landedOnRelax() {
-        JOptionPane.showMessageDialog(null, "Relax");
+        JOptionPane.showMessageDialog(null, "Ahh finally, a space that does nothing!");
 
     }
 
@@ -243,127 +260,96 @@ public class Monopoly {
                         break;
                     case 9:
                         player[playerturn].setBounds((145), (875), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 10:
                         player[playerturn].setBounds((18), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 11:
                         player[playerturn].setBounds((18), (760), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 12:
                         player[playerturn].setBounds((18), (695), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 13:
                         player[playerturn].setBounds((18), (615), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 14:
                         player[playerturn].setBounds((18), (535), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 15:
                         player[playerturn].setBounds((18), (455), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 16:
                         player[playerturn].setBounds((18), (385), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 17:
                         player[playerturn].setBounds((18), (305), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 18:
                         player[playerturn].setBounds((18), (230), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 19:
                         player[playerturn].setBounds((18), (150), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 20:
                         player[playerturn].setBounds((50), (25), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 21:
                         player[playerturn].setBounds((145), (25), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 22:
                         player[playerturn].setBounds((227), (25), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 23:
                         player[playerturn].setBounds((307), (25), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 24:
                         player[playerturn].setBounds((383), (25), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 25:
                         player[playerturn].setBounds((458), (25), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 26:
                         player[playerturn].setBounds((534), (25), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 27:
                         player[playerturn].setBounds((614), (25), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 28:
                         player[playerturn].setBounds((690), (25), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 29:
                         player[playerturn].setBounds((765), (25), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 30:
                         player[playerturn].setBounds((875), (25), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 31:
                         player[playerturn].setBounds((875), (155), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 32:
                         player[playerturn].setBounds((875), (230), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 33:
                         player[playerturn].setBounds((875), (305), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 34:
                         player[playerturn].setBounds((875), (385), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 35:
                         player[playerturn].setBounds((875), (460), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 36:
                         player[playerturn].setBounds((875), (535), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 37:
                         player[playerturn].setBounds((875), (620), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 38:
                         player[playerturn].setBounds((875), (695), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                     case 39:
                         player[playerturn].setBounds((875), (760), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
-
                         break;
                 }
                 break;
