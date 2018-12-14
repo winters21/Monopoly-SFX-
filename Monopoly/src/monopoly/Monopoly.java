@@ -201,12 +201,12 @@ public class Monopoly {
     public static void landedOnPay() {
         switch (space[playerturn]) {
             case 4:
-                JOptionPane.showMessageDialog(null, "Please Pay 200 for a Student Fee");
+                JOptionPane.showMessageDialog(null, "Please pay $200 for a Student Fee");
                 money[playerturn] -= 200;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 38:
-                JOptionPane.showMessageDialog(null, "FIELD TRIP!!! Pay 100");
+                JOptionPane.showMessageDialog(null, "FIELD TRIP!!! Pay $100");
                 money[playerturn] -= 100;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
