@@ -31,6 +31,7 @@ public class Monopoly {
     public static String[] name = new String[4];
     public static Integer[] deckChance = new Integer[16];
     public static Integer[] deckChest = new Integer[16];
+    public static boolean[] property = new boolean[28];
 
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
@@ -45,6 +46,10 @@ public class Monopoly {
                     JOptionPane.showMessageDialog(null, "Please input a valid name");
                 }
             } while ((name[nameInput].length() > 12) || (name[nameInput].length() == 0));
+
+        }
+        for (int x = 0; x < 28; x++) {
+            property[x] = false;
 
         }
         for (int playericon = 0; playericon < 4; playericon++) {
@@ -191,7 +196,7 @@ public class Monopoly {
     public static void landedOnChance() {
         int card = chanceCardMaker(deckChance);
         JOptionPane.showMessageDialog(null, chanceCards[card]);
-                switch (card) {
+        switch (card) {
             case 1:
                 money[playerturn] += 200;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
@@ -253,7 +258,7 @@ public class Monopoly {
     public static void landedOnChest() {
         int card = chestCardMaker(deckChest);
         JOptionPane.showMessageDialog(null, chestCards[card]);
-                switch (card) {
+        switch (card) {
             case 1:
                 break;
             case 2:
@@ -350,10 +355,30 @@ public class Monopoly {
 
     public static void landedOnProperty() {
         JOptionPane.showMessageDialog(null, "Property");
+        switch (space[playerturn]) {
+            case 1:
+                if (property[0] = false);
+                String[] options = {"Roll", "Purchase"};
+                int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do, " + name[playerturn] + "?",
+                        "PICK SOMETHING",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                switch (menuchoice) {
+                    case 0:
+                        moverMethod();
+                        break;
+                    case 1:
+                        purchaseMethod();
+                        break;
+
+                }
+        }
+    }
+
+    public static void purchaseMethod() {
 
     }
 
-    public static void spaceMaker() {
+public static void spaceMaker() {
         switch (playerturn) {
             case 0:
                 switch (space[playerturn]) {
