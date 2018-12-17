@@ -10,7 +10,7 @@
 
         
         Boolean[] bankrupt = new Boolean[4];
-        Boolean[][] bought = new Boolean[40];
+        Boolean[][] bought = new Boolean[40][4];
         
         
         int reply = JOptionPane.showConfirmDialog(
