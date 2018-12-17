@@ -31,6 +31,7 @@ public class Monopoly {
     public static String[] name = new String[4];
     public static Integer[] deckChance = new Integer[16];
     public static Integer[] deckChest = new Integer[16];
+    public static boolean[] bought = new boolean[40];
 
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
@@ -284,7 +285,10 @@ public class Monopoly {
     }
     
     public static void purchaseMethod() {
-
+        switch (playerturn) {
+            
+            
+        }
     }
 
     public static void spaceMaker() {
