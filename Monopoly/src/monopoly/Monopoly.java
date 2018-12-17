@@ -282,6 +282,10 @@ public class Monopoly {
         JOptionPane.showMessageDialog(null, "Property");
 
     }
+    
+    public static void purchaseMethod() {
+
+    }
 
     public static void spaceMaker() {
         switch (playerturn) {
