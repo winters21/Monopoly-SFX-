@@ -31,7 +31,7 @@ public class Monopoly {
     public static String[] name = new String[4];
     public static Integer[] deckChance = new Integer[16];
     public static Integer[] deckChest = new Integer[16];
-    public static Boolean[] getOutFree = new Boolean[4];
+    public static Integer[] getOutFree = new Integer[4];
     public static int playInGame = 4;
     public static int[] houseTotal = new int[4];
     public static int[] hotelTotal = new int[4];
@@ -260,7 +260,7 @@ public class Monopoly {
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 7:
-                getOutFree[playerturn] = true;
+                getOutFree[playerturn] += 1;
                 break;
             case 8:
                 space[playerturn] -= 3;
@@ -381,36 +381,150 @@ public class Monopoly {
         JOptionPane.showMessageDialog(null, chanceCards[card]);
         switch (card) {
             case 1:
+                money[playerturn] += 200;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                space[playerturn] = 0;
+                spaceMaker();
+                spaceLanded();
                 break;
             case 2:
+                money[playerturn] += 200;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 3:
+                money[playerturn] -= 50;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 4:
+                money[playerturn] += 50;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 5:
+                getOutFree[playerturn] += 1;
                 break;
             case 6:
+                switch (playerturn) {
+                    case 0:
+                        player[playerturn].setBounds((38), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        break;
+                    case 1:
+                        player[playerturn].setBounds((73), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        break;
+                    case 2:
+                        player[playerturn].setBounds((38), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        break;
+                    case 3:
+                        player[playerturn].setBounds((73), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        break;
+                }
                 break;
             case 7:
+                money[playerturn] += (50 * (playInGame - 1));
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                switch (playerturn) {
+                    case 0:
+                        money[1] -= 50;
+                        moneyLabel[1].setText(name[1] + "'s money: $" + money[1] + "");
+                        money[2] -= 50;
+                        moneyLabel[2].setText(name[2] + "'s money: $" + money[2] + "");
+                        money[3] -= 50;
+                        moneyLabel[3].setText(name[3] + "'s money: $" + money[3] + "");
+                        break;
+                    case 1:
+                        money[0] -= 50;
+                        moneyLabel[0].setText(name[0] + "'s money: $" + money[0] + "");
+                        money[2] -= 50;
+                        moneyLabel[2].setText(name[2] + "'s money: $" + money[2] + "");
+                        money[3] -= 50;
+                        moneyLabel[3].setText(name[3] + "'s money: $" + money[3] + "");
+                        break;
+                    case 2:
+                        money[1] -= 50;
+                        moneyLabel[1].setText(name[1] + "'s money: $" + money[1] + "");
+                        money[0] -= 50;
+                        moneyLabel[0].setText(name[0] + "'s money: $" + money[0] + "");
+                        money[3] -= 50;
+                        moneyLabel[3].setText(name[3] + "'s money: $" + money[3] + "");
+                        break;
+                    case 3:
+                        money[1] -= 50;
+                        moneyLabel[1].setText(name[1] + "'s money: $" + money[1] + "");
+                        money[2] -= 50;
+                        moneyLabel[2].setText(name[2] + "'s money: $" + money[2] + "");
+                        money[0] -= 50;
+                        moneyLabel[0].setText(name[0] + "'s money: $" + money[0] + "");
+                        break;
+                }
                 break;
             case 8:
+                money[playerturn] += 100;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 9:
+                money[playerturn] += 20;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 10:
+                money[playerturn] += (10 * (playInGame - 1));
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                switch (playerturn) {
+                    case 0:
+                        money[1] -= 10;
+                        moneyLabel[1].setText(name[1] + "'s money: $" + money[1] + "");
+                        money[2] -= 10;
+                        moneyLabel[2].setText(name[2] + "'s money: $" + money[2] + "");
+                        money[3] -= 10;
+                        moneyLabel[3].setText(name[3] + "'s money: $" + money[3] + "");
+                        break;
+                    case 1:
+                        money[0] -= 10;
+                        moneyLabel[0].setText(name[0] + "'s money: $" + money[0] + "");
+                        money[2] -= 10;
+                        moneyLabel[2].setText(name[2] + "'s money: $" + money[2] + "");
+                        money[3] -= 10;
+                        moneyLabel[3].setText(name[3] + "'s money: $" + money[3] + "");
+                        break;
+                    case 2:
+                        money[1] -= 10;
+                        moneyLabel[1].setText(name[1] + "'s money: $" + money[1] + "");
+                        money[0] -= 10;
+                        moneyLabel[0].setText(name[0] + "'s money: $" + money[0] + "");
+                        money[3] -= 10;
+                        moneyLabel[3].setText(name[3] + "'s money: $" + money[3] + "");
+                        break;
+                    case 3:
+                        money[1] -= 10;
+                        moneyLabel[1].setText(name[1] + "'s money: $" + money[1] + "");
+                        money[2] -= 10;
+                        moneyLabel[2].setText(name[2] + "'s money: $" + money[2] + "");
+                        money[0] -= 10;
+                        moneyLabel[0].setText(name[0] + "'s money: $" + money[0] + "");
+                        break;
+                }
                 break;
             case 11:
+                money[playerturn] += 100;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 12:
+                money[playerturn] -= 50;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 13:
+                money[playerturn] -= 50;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 14:
+                money[playerturn] += 25;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 15:
+                money[playerturn] -= (40 * houseTotal[playerturn]) + (115 * hotelTotal[playerturn]);
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 16:
+                money[playerturn] += 100;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
         }
     }
