@@ -31,7 +31,7 @@ public class Monopoly {
     public static String[] name = new String[4];
     public static Integer[] deckChance = new Integer[16];
     public static Integer[] deckChest = new Integer[16];
-    public static boolean[] property = new boolean[28];
+    public static boolean[] bought = new boolean[40];
 
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
@@ -48,8 +48,8 @@ public class Monopoly {
             } while ((name[nameInput].length() > 12) || (name[nameInput].length() == 0));
 
         }
-        for (int x = 0; x < 28; x++) {
-            property[x] = false;
+        for (int x = 0; x < 40; x++) {
+            bought[x] = false;
 
         }
         for (int playericon = 0; playericon < 4; playericon++) {
@@ -357,19 +357,58 @@ public class Monopoly {
         JOptionPane.showMessageDialog(null, "Property");
         switch (space[playerturn]) {
             case 1:
-                if (property[0] = false);
-                String[] options = {"Roll", "Purchase"};
-                int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do, " + name[playerturn] + "?",
-                        "PICK SOMETHING",
-                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                switch (menuchoice) {
-                    case 0:
-                        moverMethod();
-                        break;
-                    case 1:
-                        purchaseMethod();
-                        break;
+                if (bought[1] = false) {
+                    String[] options = {"Roll", "Purchase"};
+                    int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do, " + name[playerturn] + "?",
+                            "PICK SOMETHING",
+                            JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                    switch (menuchoice) {
+                        case 1:
+                            moverMethod();
+                            break;
+                        case 2:
+                            purchaseMethod();
+                            break;
+                    }
+                } else if (bought[1] = true) {
+                    JOptionPane.showMessageDialog(null, "You landed on " + name[playerturn] + " spot! You will have to pay!");
 
+                }
+            case 3:
+                if (bought[3] = false) {
+                    String[] options = {"Roll", "Purchase"};
+                    int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do, " + name[playerturn] + "?",
+                            "PICK SOMETHING",
+                            JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                    switch (menuchoice) {
+                        case 0:
+                            moverMethod();
+                            break;
+                        case 1:
+                            purchaseMethod();
+                            break;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "You landed on " + name[playerturn] + " spot! You will have to pay!");
+
+                }
+
+            case 5:
+                if (bought[5] = false) {
+                    String[] options = {"Roll", "Purchase"};
+                    int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do, " + name[playerturn] + "?",
+                            "PICK SOMETHING",
+                            JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                    switch (menuchoice) {
+                        case 0:
+                            moverMethod();
+                            break;
+                        case 1:
+                            purchaseMethod();
+                            break;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "You landed on " + name[playerturn] + " spot! You will have to pay!");
                 }
         }
     }
@@ -378,7 +417,7 @@ public class Monopoly {
 
     }
 
-public static void spaceMaker() {
+    public static void spaceMaker() {
         switch (playerturn) {
             case 0:
                 switch (space[playerturn]) {
