@@ -188,11 +188,96 @@ public class Monopoly {
 
     }
 
-    public static void landedOnChance() {
-        int card = chanceCardMaker(deckChest);
-        JOptionPane.showMessageDialog(null, chestCards[card]);
+        public static void landedOnChance() {
+        int card = chanceCardMaker(deckChance);
+        JOptionPane.showMessageDialog(null, chanceCards[card]);
+        switch (card) {
+            case 1:
+                money[playerturn] += 200;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                space[playerturn] = 0;
+                spaceMaker();
+                spaceLanded();
+                break;
+            case 2:
+                if (space[playerturn] > 23) {
+                    JOptionPane.showMessageDialog(null, "You passed go, collect $200");
+                    money[playerturn] += 200;
+                    moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                }
+                space[playerturn] = 23;
+                spaceMaker();
+                spaceLanded();
+                break;
+            case 3:
+                if (space[playerturn] > 11) {
+                    JOptionPane.showMessageDialog(null, "You passed go, collect $200");
+                    money[playerturn] += 200;
+                    moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                }
+                space[playerturn] = 11;
+                spaceMaker();
+                spaceLanded();
+                break;
+            case 4:
+                if (space[playerturn] > 28) {
+                    JOptionPane.showMessageDialog(null, "You passed go, collect $200");
+                    money[playerturn] += 200;
+                    moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                    space[playerturn] = 12;
+                } else if (space[playerturn] > 12) {
+                    space[playerturn] = 28;
+                } else if (space[playerturn] >= 0) {
+                    space[playerturn] = 12;
+                }
+                spaceMaker();
+                spaceLanded();
+                break;
+            case 5:
+                if (space[playerturn] > 35) {
+                    JOptionPane.showMessageDialog(null, "You passed go, collect $200");
+                    money[playerturn] += 200;
+                    moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                    space[playerturn] = 5;
+                } else if (space[playerturn] > 25) {
+                    space[playerturn] = 35;
+                } else if (space[playerturn] > 15) {
+                    space[playerturn] = 25;
+                } else if (space[playerturn] > 5) {
+                    space[playerturn] = 15;
+                }else if (space[playerturn] >= 0) {
+                    space[playerturn] = 5;
+                }
+                spaceMaker();
+                spaceLanded();
+                break;
+            case 6:
+                money[playerturn] += 50;
+                    moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                break;
+            case 7:
+                getOutFree[playerturn] = true;
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+        }
     }
-
     public static int chanceCardMaker(Integer archive[]) {
         int x = 0;
         int ran = ((new Random()).nextInt((16 - 1) + 1) + 1);
@@ -217,6 +302,40 @@ public class Monopoly {
     public static void landedOnChest() {
         int card = chestCardMaker(deckChance);
         JOptionPane.showMessageDialog(null, chanceCards[card]);
+                switch (card) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+        }
     }
 
     public static int chestCardMaker(Integer archive[]) {
