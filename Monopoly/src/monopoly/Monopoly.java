@@ -189,8 +189,44 @@ public class Monopoly {
     }
 
     public static void landedOnChance() {
-        int card = chanceCardMaker(deckChest);
-        JOptionPane.showMessageDialog(null, chestCards[card]);
+        int card = chanceCardMaker(deckChance);
+        JOptionPane.showMessageDialog(null, chanceCards[card]);
+                switch (card) {
+            case 1:
+                money[playerturn] += 200;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+        }
     }
 
     public static int chanceCardMaker(Integer archive[]) {
@@ -215,8 +251,42 @@ public class Monopoly {
     }
 
     public static void landedOnChest() {
-        int card = chestCardMaker(deckChance);
-        JOptionPane.showMessageDialog(null, chanceCards[card]);
+        int card = chestCardMaker(deckChest);
+        JOptionPane.showMessageDialog(null, chestCards[card]);
+                switch (card) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+        }
     }
 
     public static int chestCardMaker(Integer archive[]) {
