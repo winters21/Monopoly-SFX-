@@ -197,31 +197,10 @@ public class Monopoly {
         int x = 0;
         int ran = ((new Random()).nextInt((16 - 1) + 1) + 1);
         while (x < archive.length) {
-            if ( x == 16){
+            if (x == 16) {
                 archive = null;
                 x = 0;
-            } if (archive[x] == null) {
-                archive[x] = ran;
-                return (ran);
-            } else if (archive[x] == ran) {
-                ran = ((new Random()).nextInt((16 - 1) + 1) + 1);
-                x = 0;
-            } else {
-                x++;
             }
-        }
-        return -1;
-
-    }
-
-    public static void landedOnChest() {
-        int card = chestCardMaker(deckChance);
-        JOptionPane.showMessageDialog(null, chanceCards[card]);    }
-
-    public static int chestCardMaker(Integer archive[])  {
-        int x = 0;
-        int ran = ((new Random()).nextInt((16 - 1) + 1) + 1);
-        while (x < archive.length) {
             if (archive[x] == null) {
                 archive[x] = ran;
                 return (ran);
@@ -233,8 +212,31 @@ public class Monopoly {
             }
         }
         return -1;
+    }
 
+    public static void landedOnChest() {
+        int card = chestCardMaker(deckChance);
+        JOptionPane.showMessageDialog(null, chanceCards[card]);
+    }
 
+    public static int chestCardMaker(Integer archive[]) {
+        int x = 0;
+        int ran = ((new Random()).nextInt((16 - 1) + 1) + 1);
+        while (x < archive.length) {
+            if (x == 16) {
+                archive = null;
+                if (archive[x] == null) {
+                    archive[x] = ran;
+                    return (ran);
+                } else if (archive[x] == ran) {
+                    ran = ((new Random()).nextInt((16 - 1) + 1) + 1);
+                    x = 0;
+                } else {
+                    x++;
+                }
+            }
+        }
+        return -1;
     }
 
     public static void landedOnPay() {
