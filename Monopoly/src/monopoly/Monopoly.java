@@ -19,7 +19,7 @@ public class Monopoly {
 
     public static JButton number;
     public static JButton newNum;
-    public static int num;
+    public static int roll;
     public static JLabel[] player = new JLabel[4];
     public static int playerturn = 0;
     public static int[] space = {0, 0, 0, 0};
@@ -34,14 +34,18 @@ public class Monopoly {
     public static Integer[] deckChance = new Integer[16];
     public static Integer[] deckChest = new Integer[16];
     public static Integer[] getOutFree = {0, 0, 0, 0};
+    // how many get out of jail free cards each person has, goes down when traded or used
     public static int playInGame = 4;
+    //goes down when someone goes bankrupt, for chance cards
     public static int[] houseTotal = {0, 0, 0, 0};
     public static int[] hotelTotal = {0, 0, 0, 0};
+    // add to house total to playerturn when they upgrade, for chance cards
     public static Boolean[] bought = new Boolean[40];
     public static Boolean[] mortgaged = new Boolean[40];
     public static Integer[] owner = new Integer[40];
+    //0,1,2,3, depending on player
     public static Integer[] rentLevel = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    public static int level = 0;
+    //rentlevel[space[playerturn]]++ when buying a home or hotel
     public static Integer[][] rentPrices = {
         {0, 2, 0, 4, 0, 0, 6, 0, 6, 8, 0, 10, 0, 10, 12, 0, 14, 0, 14, 16, 0, 18, 0, 18, 20, 0, 22, 22, 0, 24, 0, 26, 26, 0, 28, 0, 0, 35, 0, 50},
         {0, 10, 0, 20, 0, 0, 30, 0, 30, 40, 0, 50, 0, 50, 60, 0, 70, 0, 70, 80, 0, 90, 0, 90, 100, 0, 110, 110, 0, 120, 0, 130, 130, 0, 150, 0, 0, 175, 0, 200},
@@ -50,6 +54,13 @@ public class Monopoly {
         {0, 160, 0, 320, 0, 0, 400, 0, 400, 450, 0, 625, 0, 625, 700, 0, 750, 0, 750, 800, 0, 875, 0, 875, 925, 0, 975, 975, 0, 1025, 0, 1100, 1100, 0, 1200, 0, 0, 1300, 0, 1700},
         {0, 250, 0, 450, 0, 0, 550, 0, 550, 600, 0, 750, 0, 750, 900, 0, 950, 0, 950, 1000, 0, 1050, 0, 1050, 1100, 0, 1150, 1150, 0, 1200, 0, 1275, 1275, 0, 1400, 0, 0, 1500, 0, 2000},};
 
+        public static int[] rrOwned = {0, 0, 0, 0};
+        public static int[] utilOwned = {0, 0, 0, 0};
+
+    
+    
+    
+    
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
         HUD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -107,7 +118,7 @@ public class Monopoly {
         moneyLabel[2].setBounds(1350, 310, 1000, 100);
         moneyLabel[3].setBounds(1350, 410, 1000, 100);
 
-        number = new JButton(num + "");
+        number = new JButton(roll + "");
         number.setFont(new Font("Monospaced Plain", Font.PLAIN, 50));
         number.setBounds(1050, 10, 100, 100);
         HUD.add(number);
@@ -150,10 +161,10 @@ public class Monopoly {
     }
 
     public static void moverMethod() {
-        num = ((new Random()).nextInt((12 - 2) + 1) + 2);
-        number.setText(num + "");
-        JOptionPane.showMessageDialog(null, "You rolled " + num);
-        space[playerturn] += num;
+        roll = ((new Random()).nextInt((12 - 2) + 1) + 2);
+        number.setText(roll + "");
+        JOptionPane.showMessageDialog(null, "You rolled " + roll);
+        space[playerturn] += roll;
         do {
             if (space[playerturn] >= 40) {
                 space[playerturn] -= 40;
@@ -618,6 +629,13 @@ public class Monopoly {
                 owner[space[playerturn]] = playerturn;
                 money[playerturn] -= buyPrice[space[playerturn]];
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                switch (space[playerturn]) {
+                    case 5:
+                    case 15:
+                    case 25:
+                    case 35:
+                        rrOwned[playerturn] += 1;
+                }
             } else if (reply == JOptionPane.NO_OPTION) {
                 JOptionPane.showMessageDialog(null, "You did not buy the propety");
             }
@@ -632,14 +650,18 @@ public class Monopoly {
                     case 15:
                     case 25:
                     case 35:
-
+                        JOptionPane.showMessageDialog(null, "Please pay $" + 50 * rrOwned[owner[space[playerturn]]]);
                         break;
                     case 12:
                     case 28:
+                     //   JOptionPane.showMessageDialog(null, "Please pay $" + );
 
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "Please pay $" + rentPrices[rentLevel[space[playerturn]]][space[playerturn]]);
+                        money[playerturn] -= rentPrices[rentLevel[space[playerturn]]][space[playerturn]];
+                        moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+
                         break;
                 }
             }
