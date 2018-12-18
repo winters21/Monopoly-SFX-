@@ -54,13 +54,9 @@ public class Monopoly {
         {0, 160, 0, 320, 0, 0, 400, 0, 400, 450, 0, 625, 0, 625, 700, 0, 750, 0, 750, 800, 0, 875, 0, 875, 925, 0, 975, 975, 0, 1025, 0, 1100, 1100, 0, 1200, 0, 0, 1300, 0, 1700},
         {0, 250, 0, 450, 0, 0, 550, 0, 550, 600, 0, 750, 0, 750, 900, 0, 950, 0, 950, 1000, 0, 1050, 0, 1050, 1100, 0, 1150, 1150, 0, 1200, 0, 1275, 1275, 0, 1400, 0, 0, 1500, 0, 2000},};
 
-        public static int[] rrOwned = {0, 0, 0, 0};
-        public static int[] utilOwned = {0, 0, 0, 0};
+    public static int[] rrOwned = {0, 0, 0, 0};
+    public static int[] utilOwned = {0, 0, 0, 0};
 
-    
-    
-    
-    
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
         HUD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -654,13 +650,14 @@ public class Monopoly {
                         break;
                     case 12:
                     case 28:
-                     //   JOptionPane.showMessageDialog(null, "Please pay $" + );
-
+                        //   JOptionPane.showMessageDialog(null, "Please pay $" + );
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "Please pay $" + rentPrices[rentLevel[space[playerturn]]][space[playerturn]]);
                         money[playerturn] -= rentPrices[rentLevel[space[playerturn]]][space[playerturn]];
                         moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                        money[owner[space[playerturn]]] += rentPrices[rentLevel[space[playerturn]]][space[playerturn]];
+                        moneyLabel[owner[space[playerturn]]].setText(name[owner[space[playerturn]]] + "'s money: $" + money[owner[space[playerturn]]] + "");
 
                         break;
                 }
