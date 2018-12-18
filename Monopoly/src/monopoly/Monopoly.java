@@ -27,6 +27,7 @@ public class Monopoly {
     public static String[] chanceCards = {"Advance to \"Go\", Collect $200", "Advance to Mrs. Egan’s Religion. If you pass “Go”, collect $200.", "Advance to Mr. Ketcheson’s Visual Arts. If you pass Go, collect $200.", "Advance your player piece to nearest Lunch Hangout Area. If unowned, you may buy it from the RBC. If owned, throw dice and pay owner a total 10 times the amount thrown.", "Advance your player piece to the nearest Plaza Restaurant and pay owner twice the rental to which he/she is otherwise entitled. If the Plaza Restaurant is unowned, you may buy it from the RBC.", "RBC pays you the $50 your parents put into your account.", "Get out of Detention Free Card. This card may be kept until needed, or traded/sold.", "Go back Three (3) tiles.", "You got caught skipping! Go to Detention. . . directly to Detention! Do not pass “Go”, do not collect $200.", "Out of rage because of a bad grade, you accidentally broke stuff at all your property sites! For each house pay $25, For each hotel pay $100.", "Mr. Adams’ charming voice forces you to buy pizza! You pay $15 worth of pizza.", "Take your time at lunch to go to the plaza’s Retaj. If you pass Go, collect $200.", "Time to play BINGO. Advance your player piece to Mr. Schwartz’s Tech.", "You have been elected as the Student Council President. Pay each player $50.", "You somehow find a jackpot of money under your couch?! Collect $150.", "You have won a contest of sorts. Collect $100."};
     public static String[] chestCards = {"Advance to \"Go\", Collect $200", "RBC withdrawal error in your favor. Collect $200.", "You stand on a stool in drama class but fall. Your friends will probably make fun of you for quite some time. Pay hospital fee of $50.", "Sold baked good at the cafeteria, you got $50.", "Get out of Detention Free Card. This card may be kept until needed, or traded/sold.", "You got caught skipping! Go to Detention. . . directly to Detention! Do not pass “Go”, do not collect $200.", "Elf Auction! Collect $50 from every player for the entry tickets.", "Coyote Prowl! Receive $100 for putting on a good show.", "You asked your parents for money. They were feeling generous and gave you a bit extra. Collect $20.", "It is your birthday, everyone in your class sings “Happy Birthday” out of tune. Collect $10 from every player.", "A student was low-riding to a point where they gave away their Gucci belt, and gave it to you. You sell it because brands don’t mean anything. Collect $100 ", "You want to purchase a school hoodie to show off your Coyote Spirit! Pay $50. ", "At the elf auction, you got into a bid battle and won. On the negative side, you battled for quite a while. Pay $50.", "You tutor a student and they pay you out of generosity. Receive $25.", "You connect to the bluetooth speaker at every property site you own and play Youtube Rewind 2018, wasn’t a bright idea… Pay $40 per house and $115 per hotel you own.", "Your grandparent slips you some money when your parents wouldn't. Receive $100."};
     public static Integer[] buyPrice = {0, 60, 0, 60, 0, 200, 100, 0, 100, 120, 0, 140, 150, 140, 160, 200, 180, 0, 180, 200, 0, 220, 0, 220, 240, 200, 260, 260, 280, 0, 300, 300, 0, 320, 200, 0, 350, 0, 400};
+    public static Integer[] rent = {0, 2, 0, 4, 0, 0, 6, 0, 6, 8, 0, 10, 0, 10, 12, 0, 14, 0, 14, 16, 0, 18, 0, 18, 20, 0, 22, 22, 0, 24, 0, 26, 26, 0, 28, 0, 0, 35, 0, 40};
     public static JLabel turn = new JLabel();
     public static Integer[] money = {1500, 1500, 1500, 1500};
     public static JLabel[] moneyLabel = new JLabel[4];
@@ -608,7 +609,7 @@ public class Monopoly {
                 money[playerturn] -= buyPrice[space[playerturn]];
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
             } else if (reply == JOptionPane.NO_OPTION) {
-              //  auctionMethod();
+              auctionMethod();
             }
         } else if (bought[space[playerturn]] == true) {
             if (owner[space[playerturn]] == playerturn) {
@@ -616,8 +617,14 @@ public class Monopoly {
             } else if (mortgaged[space[playerturn]] == true) {
                 JOptionPane.showMessageDialog(null, "This Property is Mortgaged, nothing happens");
             }
+        } else if (bought[space[playerturn]] == false) {
+            
         }
 
+    }
+    
+    public static void auctionMethod(){
+        
     }
 
     public static void spaceMaker() {
