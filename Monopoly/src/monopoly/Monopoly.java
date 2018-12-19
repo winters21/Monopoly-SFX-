@@ -217,9 +217,9 @@ public class Monopoly {
     }
 
     public static void landedOnChance() {
-        int card = chanceCardMaker(deckChance);
-        JOptionPane.showMessageDialog(null, chanceCards[card]);
-        switch (card) {
+        int cardChance = chanceCardMaker(deckChance);
+        JOptionPane.showMessageDialog(null, chanceCards[cardChance]);
+        switch (cardChance) {
             case 1:
                 money[playerturn] += 200;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
@@ -401,9 +401,9 @@ public class Monopoly {
     }
 
     public static void landedOnChest() {
-        int card = chestCardMaker(deckChance);
-        JOptionPane.showMessageDialog(null, chanceCards[card]);
-        switch (card) {
+        int cardChest = chestCardMaker(deckChance);
+        JOptionPane.showMessageDialog(null, chanceCards[cardChest]);
+        switch (cardChest) {
             case 1:
                 money[playerturn] += 200;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
@@ -658,7 +658,6 @@ public class Monopoly {
                         moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                         money[owner[space[playerturn]]] += rentPrices[rentLevel[space[playerturn]]][space[playerturn]];
                         moneyLabel[owner[space[playerturn]]].setText(name[owner[space[playerturn]]] + "'s money: $" + money[owner[space[playerturn]]] + "");
-
                         break;
                 }
             }
