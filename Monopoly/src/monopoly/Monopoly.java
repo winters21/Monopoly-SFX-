@@ -57,6 +57,7 @@ public class Monopoly {
     public static int[] rrOwned = {0, 0, 0, 0};
     public static int[] utilOwned = {0, 0, 0, 0};
     public static Boolean[] bankrupt = {false, false, false, false};
+    public static Boolean[] inJail = new Boolean[4];
 
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
@@ -132,6 +133,7 @@ public class Monopoly {
 
         Arrays.fill(bought, false);
         Arrays.fill(mortgaged, false);
+        Arrays.fill(inJail, false);
 
         HUD.setVisible(true);
 
@@ -598,15 +600,19 @@ public class Monopoly {
         switch (playerturn) {
             case 0:
                 player[playerturn].setBounds((38), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                inJail[playerturn] = true;
                 break;
             case 1:
                 player[playerturn].setBounds((73), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                inJail[playerturn] = true;
                 break;
             case 2:
                 player[playerturn].setBounds((38), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                inJail[playerturn] = true;
                 break;
             case 3:
                 player[playerturn].setBounds((73), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                inJail[playerturn] = true;
                 break;
         }
     }
@@ -616,6 +622,7 @@ public class Monopoly {
         int dub = value.nextInt((6 - 1) + 1) + 1;
         if (dub ==1) {
             JOptionPane.showMessageDialog(null, "Congrats " + name[playerturn] + " , you rolled a double and now you can get of jail.");
+            inJail[playerturn] = false;
             moverMethod();
         } else {
             JOptionPane.showMessageDialog(null, "Sorry, you didn't roll a double " + name[playerturn]);
