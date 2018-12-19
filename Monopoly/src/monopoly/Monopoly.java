@@ -56,6 +56,7 @@ public class Monopoly {
 
     public static int[] rrOwned = {0, 0, 0, 0};
     public static int[] utilOwned = {0, 0, 0, 0};
+    public static Boolean[] bankrupt = {false, false, false, false};
 
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
@@ -134,8 +135,9 @@ public class Monopoly {
 
         HUD.setVisible(true);
 
-        while (true) {
-            String[] options = {"Roll", "blank", "blank", "blank"};
+        while (playInGame > 1) {
+            if(bankrupt[playerturn] == false){
+            String[] options = {"Roll", "Properties", "Trade", "blank"};
             int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do, " + name[playerturn] + "?",
                     "PICK SOMETHING",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
@@ -153,7 +155,9 @@ public class Monopoly {
                     break;
             }
             turn.setText(name[playerturn] + "'s turn");
+            }
         }
+        JOptionPane.showMessageDialog(null, "THE GAME IS OVER");
     }
 
     public static void moverMethod() {
@@ -220,14 +224,14 @@ public class Monopoly {
         int cardChance = chanceCardMaker(deckChance);
         JOptionPane.showMessageDialog(null, chanceCards[cardChance]);
         switch (cardChance) {
-            case 1:
+            case 0:
                 money[playerturn] += 200;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 space[playerturn] = 0;
                 spaceMaker();
                 spaceLanded();
                 break;
-            case 2:
+            case 1:
                 if (space[playerturn] > 23) {
                     JOptionPane.showMessageDialog(null, "You passed go, collect $200");
                     money[playerturn] += 200;
@@ -237,7 +241,7 @@ public class Monopoly {
                 spaceMaker();
                 spaceLanded();
                 break;
-            case 3:
+            case 2:
                 if (space[playerturn] > 11) {
                     JOptionPane.showMessageDialog(null, "You passed go, collect $200");
                     money[playerturn] += 200;
@@ -247,7 +251,7 @@ public class Monopoly {
                 spaceMaker();
                 spaceLanded();
                 break;
-            case 4:
+            case 3:
                 if (space[playerturn] > 28) {
                     JOptionPane.showMessageDialog(null, "You passed go, collect $200");
                     money[playerturn] += 200;
@@ -261,7 +265,7 @@ public class Monopoly {
                 spaceMaker();
                 spaceLanded();
                 break;
-            case 5:
+            case 4:
                 if (space[playerturn] > 35) {
                     JOptionPane.showMessageDialog(null, "You passed go, collect $200");
                     money[playerturn] += 200;
@@ -279,19 +283,19 @@ public class Monopoly {
                 spaceMaker();
                 spaceLanded();
                 break;
-            case 6:
+            case 5:
                 money[playerturn] += 50;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
-            case 7:
+            case 6:
                 getOutFree[playerturn] += 1;
                 break;
-            case 8:
+            case 7:
                 space[playerturn] -= 3;
                 spaceMaker();
                 spaceLanded();
                 break;
-            case 9:
+            case 8:
                 switch (playerturn) {
                     case 0:
                         player[playerturn].setBounds((38), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
@@ -307,15 +311,15 @@ public class Monopoly {
                         break;
                 }
                 break;
-            case 10:
+            case 9:
                 money[playerturn] -= (25 * houseTotal[playerturn]) + (100 * hotelTotal[playerturn]);
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
-            case 11:
+            case 10:
                 money[playerturn] -= 15;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
-            case 12:
+            case 11:
                 if (space[playerturn] > 5) {
                     JOptionPane.showMessageDialog(null, "You passed go, collect $200");
                     money[playerturn] += 200;
@@ -325,12 +329,12 @@ public class Monopoly {
                 spaceMaker();
                 spaceLanded();
                 break;
-            case 13:
+            case 12:
                 space[playerturn] = 39;
                 spaceMaker();
                 spaceLanded();
                 break;
-            case 14:
+            case 13:
                 money[playerturn] -= (50 * (playInGame - 1));
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 switch (playerturn) {
@@ -368,11 +372,11 @@ public class Monopoly {
                         break;
                 }
                 break;
-            case 15:
+            case 14:
                 money[playerturn] += 150;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
-            case 16:
+            case 15:
                 money[playerturn] += 100;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
@@ -381,9 +385,9 @@ public class Monopoly {
 
     public static int chanceCardMaker(Integer archive[]) {
         int x = 0;
-        int ran = ((new Random()).nextInt((16 - 1) + 1) + 1);
+        int ran = ((new Random()).nextInt((15 - 0) + 1) + 0);
         while (x < archive.length) {
-            if (x == 16) {
+            if (x == 15) {
                 archive = null;
                 x = 0;
             }
@@ -401,32 +405,32 @@ public class Monopoly {
     }
 
     public static void landedOnChest() {
-        int cardChest = chestCardMaker(deckChance);
+        int cardChest = chestCardMaker(deckChest);
         JOptionPane.showMessageDialog(null, chanceCards[cardChest]);
         switch (cardChest) {
-            case 1:
+            case 0:
                 money[playerturn] += 200;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 space[playerturn] = 0;
                 spaceMaker();
                 spaceLanded();
                 break;
-            case 2:
+            case 1:
                 money[playerturn] += 200;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
-            case 3:
+            case 2:
                 money[playerturn] -= 50;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
-            case 4:
+            case 3:
                 money[playerturn] += 50;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
-            case 5:
+            case 4:
                 getOutFree[playerturn] += 1;
                 break;
-            case 6:
+            case 5:
                 switch (playerturn) {
                     case 0:
                         player[playerturn].setBounds((38), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
@@ -442,7 +446,7 @@ public class Monopoly {
                         break;
                 }
                 break;
-            case 7:
+            case 6:
                 money[playerturn] += (50 * (playInGame - 1));
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 switch (playerturn) {
@@ -480,15 +484,15 @@ public class Monopoly {
                         break;
                 }
                 break;
-            case 8:
+            case 7:
                 money[playerturn] += 100;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
-            case 9:
+            case 8:
                 money[playerturn] += 20;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
-            case 10:
+            case 9:
                 money[playerturn] += (10 * (playInGame - 1));
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 switch (playerturn) {
@@ -526,8 +530,12 @@ public class Monopoly {
                         break;
                 }
                 break;
-            case 11:
+            case 10:
                 money[playerturn] += 100;
+                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                break;
+            case 11:
+                money[playerturn] -= 50;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 12:
@@ -535,18 +543,14 @@ public class Monopoly {
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
             case 13:
-                money[playerturn] -= 50;
-                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
-                break;
-            case 14:
                 money[playerturn] += 25;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
-            case 15:
+            case 14:
                 money[playerturn] -= (40 * houseTotal[playerturn]) + (115 * hotelTotal[playerturn]);
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
-            case 16:
+            case 15:
                 money[playerturn] += 100;
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                 break;
@@ -554,20 +558,21 @@ public class Monopoly {
     }
 
     public static int chestCardMaker(Integer archive[]) {
-        int x = 0;
-        int ran = ((new Random()).nextInt((16 - 1) + 1) + 1);
-        while (x < archive.length) {
-            if (x == 16) {
+        int z = 0;
+        int ran = ((new Random()).nextInt((15 - 0) + 1) + 0);
+        while (z < archive.length) {
+            if (z == 15) {
                 archive = null;
-                if (archive[x] == null) {
-                    archive[x] = ran;
-                    return (ran);
-                } else if (archive[x] == ran) {
-                    ran = ((new Random()).nextInt((16 - 1) + 1) + 1);
-                    x = 0;
-                } else {
-                    x++;
-                }
+                z = 0;
+            }
+            if (archive[z] == null) {
+                archive[z] = ran;
+                return (ran);
+            } else if (archive[z] == ran) {
+                ran = ((new Random()).nextInt((16 - 1) + 1) + 1);
+                z = 0;
+            } else {
+                z++;
             }
         }
         return -1;
@@ -650,7 +655,11 @@ public class Monopoly {
                         break;
                     case 12:
                     case 28:
-                        //   JOptionPane.showMessageDialog(null, "Please pay $" + );
+                        if ((owner[space[playerturn]] == owner[12]) && (owner[space[playerturn]] == owner[28])) {
+                            JOptionPane.showMessageDialog(null, "Please pay $" + (10 * roll));
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Please pay $" + (4 * roll));
+                        }
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "Please pay $" + rentPrices[rentLevel[space[playerturn]]][space[playerturn]]);
