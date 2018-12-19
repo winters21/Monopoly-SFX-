@@ -75,7 +75,7 @@ public class Monopoly {
         }
         for (int playericon = 0; playericon < 4; playericon++) {
             String[] options = {"Binder", "Mouse", "Sun G.'s", "Phone", "Soccer", "Paint"};
-            int iconchoice = JOptionPane.showOptionDialog(null, "Choose a playerpiece " + name[playericon],
+            int iconchoice = JOptionPane.showOptionDialog(null, "Choose a playerpiece, " + name[playericon],
                     "Click a button",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
             switch (iconchoice) {
