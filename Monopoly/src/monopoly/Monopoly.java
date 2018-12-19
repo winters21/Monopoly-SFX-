@@ -608,7 +608,17 @@ public class Monopoly {
             case 3:
                 player[playerturn].setBounds((73), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                 break;
-
+        }
+    }
+    
+    public static void jailOption() {
+        Random value = new Random();
+        int dub = value.nextInt((6 - 1) + 1) + 1;
+        if (dub ==1) {
+            JOptionPane.showMessageDialog(null, "Congrats " + name[playerturn] + " , you rolled a double and now you can get of jail.");
+            moverMethod();
+        } else {
+            JOptionPane.showMessageDialog(null, "Sorry, you didn't roll a double " + name[playerturn]);
         }
     }
 
