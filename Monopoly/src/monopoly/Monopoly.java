@@ -139,7 +139,7 @@ public class Monopoly {
 
         while (playInGame > 1) {
             if(bankrupt[playerturn] == false){
-            String[] options = {"Roll", "Properties", "Trade", "blank"};
+            String[] options = {"Roll", "Properties", "Trade"};
             int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do, " + name[playerturn] + "?",
                     "PICK SOMETHING",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
