@@ -5,6 +5,7 @@ ICS3U
  */
 package monopoly;
 // imports
+
 import java.awt.Font;
 import java.io.IOException;
 import java.util.Arrays;
@@ -40,7 +41,7 @@ public class Monopoly {
     // how many get out of jail free cards each person has, goes down when traded or used
     public static int playInGame = 4;
     //goes down when someone goes bankrupt, for chance cards
-    public static int[] houseTotal = {0, 0, 0, 0}; 
+    public static int[] houseTotal = {0, 0, 0, 0};
     public static int[] hotelTotal = {0, 0, 0, 0};
     // add to house total to playerturn when they upgrade, for chance cards
     public static Boolean[] bought = new Boolean[40];
@@ -119,17 +120,17 @@ public class Monopoly {
         moneyLabel[1].setBounds(1350, 210, 1000, 100);
         moneyLabel[2].setBounds(1350, 310, 1000, 100);
         moneyLabel[3].setBounds(1350, 410, 1000, 100);
-
+// adds the roll amount label
         number = new JButton(roll + "");
         number.setFont(new Font("Monospaced Plain", Font.PLAIN, 50));
         number.setBounds(1050, 10, 100, 100);
         HUD.add(number);
-
+// adds the label for player turns
         turn.setText(name[playerturn] + "'s turn");
         turn.setFont(new Font("Monospaced Plain", Font.PLAIN, 50));
         turn.setBounds(1350, 10, 1000, 100);
         HUD.add(turn);
-
+// adds the label for the board
         JLabel board = new JLabel();
         board.setIcon(new ImageIcon("images/monopolyboard.jpg"));
         board.setBounds((1), (1), board.getPreferredSize().width, board.getPreferredSize().height);
@@ -137,30 +138,35 @@ public class Monopoly {
 
         Arrays.fill(bought, false);
         Arrays.fill(mortgaged, false);
-        Arrays.fill(inJail, false);
-
+// makes all boolean variables false cause repeating false 40 times is annoying
         HUD.setVisible(true);
-
+//opens the frame, with images
         while (playInGame > 1) {
-            if (bankrupt[playerturn] == false) {
+            if (bankrupt[playerturn] == false) { // only can roll if you are not bankrupt
                 String[] options = {"Roll", "Properties", "Trade"};
-                int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do, " + name[playerturn] + "?",
+                int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do, " + name[playerturn] + "?", // options on what you want to do
                         "PICK SOMETHING",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                 switch (menuchoice) {
                     case 0:
-                        if (inJail[playerturn] == true) {
+                        if (inJail[playerturn] == true) { // if you roll but are in jail, you go to the jail mehtod
                             jailOption();
                         } else {
-                            moverMethod();
+                            moverMethod(); // method that starts rolling
                         }
                         break;
-                    case 1:
+                    case 1: // unfinished parts :/
                         JOptionPane.showMessageDialog(null, "UNFINISHED");
                         break;
                     case 2:
                         JOptionPane.showMessageDialog(null, "UNFINISHED");
                         break;
+                }
+                turn.setText(name[playerturn] + "'s turn"); // next players turn once your turn is up
+            } else {
+                playerturn += 1;
+                if (playerturn == 4) {
+                    playerturn = 0;
                 }
                 turn.setText(name[playerturn] + "'s turn");
             }
