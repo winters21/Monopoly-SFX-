@@ -636,7 +636,6 @@ public class Monopoly {
             inJail[playerturn] = false;
             space[playerturn] = 10;
             jailRolls[playerturn] = 0;
-
             moverMethod();
         } else {
             String[] options = {"Roll", "Pay", "Card"};
@@ -662,6 +661,7 @@ public class Monopoly {
                     }
                     break;
                 case 1:
+                    JOptionPane.showMessageDialog(null, "You paid $50 to get out of jail");
                     money[playerturn] -= 50;
                     moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
                     inJail[playerturn] = false;
