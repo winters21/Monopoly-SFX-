@@ -163,7 +163,7 @@ public class Monopoly {
                         break;
                 }
                 turn.setText(name[playerturn] + "'s turn"); // next players turn once your turn is up
-            } else {
+            } else { // if the player is bankrupt
                 playerturn += 1;
                 if (playerturn == 4) {
                     playerturn = 0;
@@ -171,15 +171,15 @@ public class Monopoly {
                 turn.setText(name[playerturn] + "'s turn");
             }
         }
-        JOptionPane.showMessageDialog(null, "THE GAME IS OVER");
+        JOptionPane.showMessageDialog(null, "THE GAME IS OVER"); // when 3 players are bankrupt
     }
 
-    public static void moverMethod() {
+    public static void moverMethod() { // makes the random number roll
         roll = ((new Random()).nextInt((12 - 2) + 1) + 2);
         number.setText(roll + "");
         JOptionPane.showMessageDialog(null, "You rolled " + roll);
         space[playerturn] += roll;
-        do {
+        do { // if it is above 40, resets down a cycle
             if (space[playerturn] >= 40) {
                 space[playerturn] -= 40;
                 JOptionPane.showMessageDialog(null, "You passed go, collect $200");
@@ -187,10 +187,10 @@ public class Monopoly {
                 moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
             }
         } while (space[playerturn] >= 40);
-        spaceMaker();
-        spaceLanded();
+        spaceMaker(); // moves the image
+        spaceLanded(); // JOPTIONPANE determined by space
 
-        playerturn += 1;
+        playerturn += 1; // end of turn, next players turn
         if (playerturn == 4) {
             playerturn = 0;
         }
@@ -198,7 +198,7 @@ public class Monopoly {
 
     public static void spaceLanded() {
         JOptionPane.showMessageDialog(null, name[playerturn] + ", you landed on " + spacename[space[playerturn]]);
-        switch (space[playerturn]) {
+        switch (space[playerturn]) { // determines where to go once you land on something, 
             case 0:
                 landedOnGo();
                 break;
@@ -230,11 +230,11 @@ public class Monopoly {
     }
 
     public static void landedOnGo() {
-        JOptionPane.showMessageDialog(null, "GO, time to relax!");
+        JOptionPane.showMessageDialog(null, "GO, time to relax!"); // flavourtext
 
     }
 
-    public static void landedOnChance() {
+    public static void landedOnChance() { // chooses a random num, and text asosciated with that
         int cardChance = chanceCardMaker(deckChance);
         JOptionPane.showMessageDialog(null, chanceCards[cardChance]);
         switch (cardChance) {
@@ -401,7 +401,7 @@ public class Monopoly {
         }
     }
 
-    public static int chanceCardMaker(Integer archive[]) {
+    public static int chanceCardMaker(Integer archive[]) { // random number maker, no repeats until the deck is done
         int x = 0;
         int ran = ((new Random()).nextInt((15 - 0) + 1) + 0);
         while (x < archive.length) {
@@ -422,7 +422,7 @@ public class Monopoly {
         return -1;
     }
 
-    public static void landedOnChest() {
+    public static void landedOnChest() { // exact same as chance, just different cards
         int cardChest = chestCardMaker(deckChest);
         JOptionPane.showMessageDialog(null, chestCards[cardChest]);
         switch (cardChest) {
@@ -579,7 +579,7 @@ public class Monopoly {
         }
     }
 
-    public static int chestCardMaker(Integer archive[]) {
+    public static int chestCardMaker(Integer archive[]) { //exact same as chance
         int z = 0;
         int ran = ((new Random()).nextInt((15 - 0) + 1) + 0);
         while (z < archive.length) {
@@ -600,7 +600,7 @@ public class Monopoly {
         return -1;
     }
 
-    public static void landedOnPay() {
+    public static void landedOnPay() { // when you land on student fee or field trip, pays money, and also changes the label
         switch (space[playerturn]) {
             case 4:
                 JOptionPane.showMessageDialog(null, "Please Pay $200 for a Student Fee");
@@ -615,7 +615,7 @@ public class Monopoly {
         }
     }
 
-    public static void landedOnGoTo() {
+    public static void landedOnGoTo() { //this code is when you land on go to jail, assigns the label and makes the in jail true
         JOptionPane.showMessageDialog(null, "GO TO JAIL, DO NOT PASS GO, DO NOT COLLECT 200");
         switch (playerturn) {
             case 0:
@@ -637,7 +637,7 @@ public class Monopoly {
         }
     }
 
-    public static void jailOption() {
+    public static void jailOption() { // code for when you are in jail, 
         if (jailRolls[playerturn] == 3) {
             JOptionPane.showMessageDialog(null, "You have rolled 3 times already, please pay 50 dollars");
             money[playerturn] -= 50;
@@ -696,12 +696,12 @@ public class Monopoly {
         }
     }
 
-    public static void landedOnRelax() {
+    public static void landedOnRelax() { // FLAVOUR TEXT
         JOptionPane.showMessageDialog(null, "Ahh finally, a space that does nothing!");
 
     }
 
-    public static void landedOnProperty() {
+    public static void landedOnProperty() { // this is when you land on a propety, it checks if it is mortgaged or is bought, and then makes the player pay based off of the 2d array, special code for Plaza and Caf+LC
         if (bought[space[playerturn]] == false) {
             int reply = JOptionPane.showConfirmDialog(
                     null,
@@ -757,7 +757,7 @@ public class Monopoly {
         }
     }
 
-    public static void spaceMaker() {
+    public static void spaceMaker() { // THIS IS THE IMPORTANT PART WHERE LABELS MOVE DEPENDING ON SPACE ROLLED
         switch (playerturn) {
             case 0:
                 switch (space[playerturn]) {
