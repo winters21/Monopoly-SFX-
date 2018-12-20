@@ -6,14 +6,24 @@ ICS3U
 package monopoly;
 
 import java.awt.Font;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Random;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 public class Monopoly {
 
@@ -59,13 +69,13 @@ public class Monopoly {
     public static Boolean[] bankrupt = {false, false, false, false};
     public static Boolean[] inJail = {false, false, false, false};
     public static Integer[] jailRolls = {0, 0, 0, 0};
-
+private static File audioFile = new File("music/mainmusicfix.wav");
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
         HUD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         HUD.setSize(1800, 1050);
         HUD.setLayout(null);
-
+        MainMusic();
         for (int nameInput = 0; nameInput < 4; nameInput++) {
             do {
                 name[nameInput] = JOptionPane.showInputDialog("What is your name Player " + (nameInput + 1) + " (12 Characters Max)");
@@ -80,6 +90,7 @@ public class Monopoly {
             int iconchoice = JOptionPane.showOptionDialog(null, "Choose a playerpiece, " + name[playericon],
                     "Click a button",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            Music("music/click.wav");
             switch (iconchoice) {
                 case 0:
                     player[playericon] = new JLabel(new ImageIcon("images/players/binderfix.png"));
@@ -607,6 +618,7 @@ public class Monopoly {
     }
 
     public static void landedOnGoTo() {
+        Music("music/policesiren.wav");
         JOptionPane.showMessageDialog(null, "GO TO JAIL, DO NOT PASS GO, DO NOT COLLECT 200");
         switch (playerturn) {
             case 0:
@@ -688,6 +700,7 @@ public class Monopoly {
     }
 
     public static void landedOnRelax() {
+        Music("music/suck.wav");
         JOptionPane.showMessageDialog(null, "Ahh finally, a space that does nothing!");
 
     }
@@ -700,6 +713,7 @@ public class Monopoly {
                     "Wanna buy it?",
                     JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
+                Music("music/purchase.wav");
                 JOptionPane.showMessageDialog(null, "You bought the propety");
                 bought[space[playerturn]] = true;
                 owner[space[playerturn]] = playerturn;
@@ -745,6 +759,30 @@ public class Monopoly {
                         break;
                 }
             }
+        }
+    }
+    
+         public static void Music(String filepath) { //Audio Method - Will play music (wav files) located in the music folder.
+        InputStream music;
+        try {
+            music = new FileInputStream(new File(filepath));
+            AudioStream audios = new AudioStream(music);
+            AudioPlayer.player.start(audios);
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+
+    }
+
+    public static void MainMusic() { //this method plays a sound
+        try {
+            AudioInputStream audioin = AudioSystem.getAudioInputStream(audioFile); //the audio file must be in .wav format
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioin);
+            clip.loop(Clip.LOOP_CONTINUOUSLY); //plays the sound continuously
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
         }
     }
 
