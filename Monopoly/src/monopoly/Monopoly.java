@@ -300,16 +300,16 @@ public class Monopoly {
             case 8:
                 switch (playerturn) {
                     case 0:
-                        player[playerturn].setBounds((38), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((48), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 1:
-                        player[playerturn].setBounds((73), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((83), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 2:
-                        player[playerturn].setBounds((38), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((48), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 3:
-                        player[playerturn].setBounds((73), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((83), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                 }
                 break;
@@ -435,16 +435,16 @@ public class Monopoly {
             case 5:
                 switch (playerturn) {
                     case 0:
-                        player[playerturn].setBounds((38), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((48), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 1:
-                        player[playerturn].setBounds((73), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((83), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 2:
-                        player[playerturn].setBounds((38), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((48), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                     case 3:
-                        player[playerturn].setBounds((73), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        player[playerturn].setBounds((83), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                         break;
                 }
                 break;
@@ -599,19 +599,19 @@ public class Monopoly {
         JOptionPane.showMessageDialog(null, "GO TO JAIL, DO NOT PASS GO, DO NOT COLLECT 200");
         switch (playerturn) {
             case 0:
-                player[playerturn].setBounds((38), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                player[playerturn].setBounds((48), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                 inJail[playerturn] = true;
                 break;
             case 1:
-                player[playerturn].setBounds((73), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                player[playerturn].setBounds((83), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                 inJail[playerturn] = true;
                 break;
             case 2:
-                player[playerturn].setBounds((38), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                player[playerturn].setBounds((48), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                 inJail[playerturn] = true;
                 break;
             case 3:
-                player[playerturn].setBounds((73), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                player[playerturn].setBounds((83), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
                 inJail[playerturn] = true;
                 break;
         }
