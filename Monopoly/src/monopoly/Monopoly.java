@@ -26,7 +26,7 @@ public class Monopoly {
     public static String[] spacename = {"Go!", "Mr. Royko's Room", "Community Chest", "Ms. Dale's Room", "Student Fee", "Retaj", "Ms. Brooks' Room", "Chance", "Mr. Blank's Room", "Mr. Loy's Room", "Jail/Just Visiting", "Mr. Ketcheson's Room", "Cafeteria", "Ms. Turnbulll's Room", "Mr. Yemensky's Room", "Subway", "Ms. Galveals' Room", "Community Chest", "Mr. Lahey's Room", "Ms. Andreoli's Room", "Hall Pass", "Mr. McKee's Room", "Chance Card", "Ms. Egan's Room", "Mr. Baar's Room", "DQ", "Mr. Thompson's Room", "Ms. Miri's Room", "Learning Commons", "Mr. Scerbo's Room", "Go to Detention", "Ms. Sipes' Room", "Mrs. Gibson's Room", "Community Chest", "Ms. Ramsay's Room", "Gabriel's Pizza", "Chance", "Mr. Blakely's Room", "Field Trip", "Mr. Schwartz's Room"};
     public static String[] chanceCards = {"Advance to \"Go\", Collect $200", "Advance to Mrs. Egan’s Religion. If you pass \"Go\", collect $200.", "Advance to Mr. Ketcheson’s Visual Arts. If you pass \"Go\", collect $200.", "Advance your player piece to nearest Lunch Hangout Area. If unowned, you may buy it from the RBC. If owned, throw dice and pay owner a total 10 times the amount thrown.", "Advance your player piece to the nearest Plaza Restaurant and pay owner twice the rental to which he/she is otherwise entitled. If the Plaza Restaurant is unowned, you may buy it from the RBC.", "RBC pays you the $50 your parents put into your account.", "Get out of Detention Free Card. This card may be kept until needed, or traded/sold.", "Go back Three (3) tiles.", "You got caught skipping! Go to Detention. . . directly to Detention! Do not pass \"Go\", do not collect $200.", "Out of rage because of a bad grade, you accidentally broke stuff at all your property sites! For each house pay $25, For each hotel pay $100.", "Mr. Adams’ charming voice forces you to buy pizza! You pay $15 worth of pizza.", "Take your time at lunch to go to the plaza’s Retaj. If you pass Go, collect $200.", "Time to play BINGO. Advance your player piece to Mr. Schwartz’s Tech.", "You have been elected as the Student Council President. Pay each player $50.", "You somehow find a jackpot of money under your couch?! Collect $150.", "You have won a contest of sorts. Collect $100."};
     public static String[] chestCards = {"Advance to \"Go\", Collect $200", "RBC withdrawal error in your favor. Collect $200.", "You stand on a stool in drama class but fall. Your friends will probably make fun of you for quite some time. Pay hospital fee of $50.", "Sold baked good at the cafeteria, you got $50.", "Get out of Detention Free Card. This card may be kept until needed, or traded/sold.", "You got caught skipping! Go to Detention. . . directly to Detention! Do not pass \"Go\", do not collect $200.", "Elf Auction! Collect $50 from every player for the entry tickets.", "Coyote Prowl! Receive $100 for putting on a good show.", "You asked your parents for money. They were feeling generous and gave you a bit extra. Collect $20.", "It is your birthday, everyone in your class sings “Happy Birthday” out of tune. Collect $10 from every player.", "A student was low-riding to a point where they gave away their Gucci belt, and gave it to you. You sell it because brands don’t mean anything. Collect $100 ", "You want to purchase a school hoodie to show off your Coyote Spirit! Pay $50. ", "At the elf auction, you got into a bid battle and won. On the negative side, you battled for quite a while. Pay $50.", "You tutor a student and they pay you out of generosity. Receive $25.", "You connect to the bluetooth speaker at every property site you own and play Youtube Rewind 2018, wasn’t a bright idea… Pay $40 per house and $115 per hotel you own.", "Your grandparent slips you some money when your parents wouldn't. Receive $100."};
-    public static Integer[] buyPrice = {0, 60, 0, 60, 0, 200, 100, 0, 100, 120, 0, 140, 150, 140, 160, 200, 180, 0, 180, 200, 0, 220, 0, 220, 240, 200, 260, 260, 150 ,280, 0, 300, 300, 0, 320, 200, 0, 350, 0, 400};
+    public static Integer[] buyPrice = {0, 60, 0, 60, 0, 200, 100, 0, 100, 120, 0, 140, 150, 140, 160, 200, 180, 0, 180, 200, 0, 220, 0, 220, 240, 200, 260, 260, 150, 280, 0, 300, 300, 0, 320, 200, 0, 350, 0, 400};
     public static JLabel turn = new JLabel();
     public static Integer[] money = {1500, 1500, 1500, 1500};
     public static JLabel[] moneyLabel = new JLabel[4];
@@ -57,7 +57,8 @@ public class Monopoly {
     public static int[] rrOwned = {0, 0, 0, 0};
     public static int[] utilOwned = {0, 0, 0, 0};
     public static Boolean[] bankrupt = {false, false, false, false};
-    public static Boolean[] inJail = new Boolean[4];
+    public static Boolean[] inJail = {false, false, false, false};
+    public static Integer[] jailRolls = {0, 0, 0, 0};
 
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
@@ -138,25 +139,27 @@ public class Monopoly {
         HUD.setVisible(true);
 
         while (playInGame > 1) {
-            if(bankrupt[playerturn] == false){
-            String[] options = {"Roll", "Properties", "Trade"};
-            int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do, " + name[playerturn] + "?",
-                    "PICK SOMETHING",
-                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-            switch (menuchoice) {
-                case 0:
-                    moverMethod();
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-            }
-            turn.setText(name[playerturn] + "'s turn");
+            if (bankrupt[playerturn] == false) {
+                String[] options = {"Roll", "Properties", "Trade"};
+                int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do, " + name[playerturn] + "?",
+                        "PICK SOMETHING",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                switch (menuchoice) {
+                    case 0:
+                        if (inJail[playerturn] == true) {
+                            jailOption();
+                        } else {
+                            moverMethod();
+                        }
+                        break;
+                    case 1:
+                        JOptionPane.showMessageDialog(null, "UNFINISHED");
+                        break;
+                    case 2:
+                        JOptionPane.showMessageDialog(null, "UNFINISHED");
+                        break;
+                }
+                turn.setText(name[playerturn] + "'s turn");
             }
         }
         JOptionPane.showMessageDialog(null, "THE GAME IS OVER");
@@ -301,15 +304,19 @@ public class Monopoly {
                 switch (playerturn) {
                     case 0:
                         player[playerturn].setBounds((48), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        inJail[playerturn] = true;
                         break;
                     case 1:
                         player[playerturn].setBounds((83), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        inJail[playerturn] = true;
                         break;
                     case 2:
                         player[playerturn].setBounds((48), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        inJail[playerturn] = true;
                         break;
                     case 3:
                         player[playerturn].setBounds((83), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        inJail[playerturn] = true;
                         break;
                 }
                 break;
@@ -397,7 +404,7 @@ public class Monopoly {
                 archive[x] = ran;
                 return (ran);
             } else if (archive[x] == ran) {
-                ran = ((new Random()).nextInt((16 - 1) + 1) + 1);
+                ran = ((new Random()).nextInt((15 - 0) + 1) + 0);
                 x = 0;
             } else {
                 x++;
@@ -436,15 +443,19 @@ public class Monopoly {
                 switch (playerturn) {
                     case 0:
                         player[playerturn].setBounds((48), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        inJail[playerturn] = true;
                         break;
                     case 1:
                         player[playerturn].setBounds((83), (845), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        inJail[playerturn] = true;
                         break;
                     case 2:
                         player[playerturn].setBounds((48), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        inJail[playerturn] = true;
                         break;
                     case 3:
                         player[playerturn].setBounds((83), (880), player[playerturn].getPreferredSize().width, player[playerturn].getPreferredSize().height);
+                        inJail[playerturn] = true;
                         break;
                 }
                 break;
@@ -571,7 +582,7 @@ public class Monopoly {
                 archive[z] = ran;
                 return (ran);
             } else if (archive[z] == ran) {
-                ran = ((new Random()).nextInt((16 - 1) + 1) + 1);
+                ran = ((new Random()).nextInt((15 - 0) + 1) + 0);
                 z = 0;
             } else {
                 z++;
@@ -616,16 +627,63 @@ public class Monopoly {
                 break;
         }
     }
-    
+
     public static void jailOption() {
-        Random value = new Random();
-        int dub = value.nextInt((6 - 1) + 1) + 1;
-        if (dub ==1) {
-            JOptionPane.showMessageDialog(null, "Congrats " + name[playerturn] + " , you rolled a double and now you can get of jail.");
+        if (jailRolls[playerturn] == 3) {
+            JOptionPane.showMessageDialog(null, "You have rolled 3 times already, please pay 50 dollars");
+            money[playerturn] -= 50;
+            moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
             inJail[playerturn] = false;
+            space[playerturn] = 10;
+            jailRolls[playerturn] = 0;
+
             moverMethod();
         } else {
-            JOptionPane.showMessageDialog(null, "Sorry, you didn't roll a double " + name[playerturn]);
+            String[] options = {"Roll", "Pay", "Card"};
+            int menuchoice = JOptionPane.showOptionDialog(null, "What would you like to do, " + name[playerturn] + "?",
+                    "IN JAIL, DO SOMETHING",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            switch (menuchoice) {
+                case 0:
+                    int dub = ((new Random()).nextInt((6 - 1) + 1) + 1);
+                    if (dub == 1) {
+                        JOptionPane.showMessageDialog(null, "Congrats " + name[playerturn] + " , you rolled a double and now you can get of jail.");
+                        inJail[playerturn] = false;
+                        space[playerturn] = 10;
+                        jailRolls[playerturn] = 0;
+                        moverMethod();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Sorry, you didn't roll a double " + name[playerturn]);
+                        jailRolls[playerturn] += 1;
+                        playerturn += 1;
+                        if (playerturn == 4) {
+                            playerturn = 0;
+                        }
+                    }
+                    break;
+                case 1:
+                    money[playerturn] -= 50;
+                    moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                    inJail[playerturn] = false;
+                    space[playerturn] = 10;
+                    jailRolls[playerturn] = 0;
+                    moverMethod();
+                    break;
+                case 2:
+                    if (getOutFree[playerturn] > 0) {
+                        JOptionPane.showMessageDialog(null, "You used a get out of Jail Free Card");
+                        getOutFree[playerturn] -= 1;
+                        inJail[playerturn] = false;
+                        space[playerturn] = 10;
+                        jailRolls[playerturn] = 0;
+                        moverMethod();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Sorry, you do not have a Get out of Jail Free Card");
+                        jailOption();
+                    }
+                    break;
+            }
+
         }
     }
 
