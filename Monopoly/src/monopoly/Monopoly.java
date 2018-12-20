@@ -4,7 +4,7 @@ By: Shawn Sun, Christopher Jordan, Gabriel Martell, and Bryce Batten
 ICS3U
  */
 package monopoly;
-
+// imports
 import java.awt.Font;
 import java.io.IOException;
 import java.util.Arrays;
@@ -17,31 +17,34 @@ import javax.swing.JOptionPane;
 
 public class Monopoly {
 
-    public static JButton number;
-    public static JButton newNum;
-    public static int roll;
-    public static JLabel[] player = new JLabel[4];
-    public static int playerturn = 0;
-    public static int[] space = {0, 0, 0, 0};
+    public static JButton number; //button that shows what you rolled
+    public static int roll; // the roll of each player
+    public static JLabel[] player = new JLabel[4]; // the icon that representes each player
+    public static int playerturn = 0; // the int that determines who is playing right now
+    public static int[] space = {0, 0, 0, 0}; // each space is represented by a number
     public static String[] spacename = {"Go!", "Mr. Royko's Room", "Community Chest", "Ms. Dale's Room", "Student Fee", "Retaj", "Ms. Brooks' Room", "Chance", "Mr. Blank's Room", "Mr. Loy's Room", "Jail/Just Visiting", "Mr. Ketcheson's Room", "Cafeteria", "Ms. Turnbulll's Room", "Mr. Yemensky's Room", "Subway", "Ms. Galveals' Room", "Community Chest", "Mr. Lahey's Room", "Ms. Andreoli's Room", "Hall Pass", "Mr. McKee's Room", "Chance Card", "Ms. Egan's Room", "Mr. Baar's Room", "DQ", "Mr. Thompson's Room", "Ms. Miri's Room", "Learning Commons", "Mr. Scerbo's Room", "Go to Detention", "Ms. Sipes' Room", "Mrs. Gibson's Room", "Community Chest", "Ms. Ramsay's Room", "Gabriel's Pizza", "Chance", "Mr. Blakely's Room", "Field Trip", "Mr. Schwartz's Room"};
+    //text for each space
     public static String[] chanceCards = {"Advance to \"Go\", Collect $200", "Advance to Mrs. Egan’s Religion. If you pass \"Go\", collect $200.", "Advance to Mr. Ketcheson’s Visual Arts. If you pass \"Go\", collect $200.", "Advance your player piece to nearest Lunch Hangout Area. If unowned, you may buy it from the RBC. If owned, throw dice and pay owner a total 10 times the amount thrown.", "Advance your player piece to the nearest Plaza Restaurant and pay owner twice the rental to which he/she is otherwise entitled. If the Plaza Restaurant is unowned, you may buy it from the RBC.", "RBC pays you the $50 your parents put into your account.", "Get out of Detention Free Card. This card may be kept until needed, or traded/sold.", "Go back Three (3) tiles.", "You got caught skipping! Go to Detention. . . directly to Detention! Do not pass \"Go\", do not collect $200.", "Out of rage because of a bad grade, you accidentally broke stuff at all your property sites! For each house pay $25, For each hotel pay $100.", "Mr. Adams’ charming voice forces you to buy pizza! You pay $15 worth of pizza.", "Take your time at lunch to go to the plaza’s Retaj. If you pass Go, collect $200.", "Time to play BINGO. Advance your player piece to Mr. Schwartz’s Tech.", "You have been elected as the Student Council President. Pay each player $50.", "You somehow find a jackpot of money under your couch?! Collect $150.", "You have won a contest of sorts. Collect $100."};
+// all of the chance cards in game
     public static String[] chestCards = {"Advance to \"Go\", Collect $200", "RBC withdrawal error in your favor. Collect $200.", "You stand on a stool in drama class but fall. Your friends will probably make fun of you for quite some time. Pay hospital fee of $50.", "Sold baked good at the cafeteria, you got $50.", "Get out of Detention Free Card. This card may be kept until needed, or traded/sold.", "You got caught skipping! Go to Detention. . . directly to Detention! Do not pass \"Go\", do not collect $200.", "Elf Auction! Collect $50 from every player for the entry tickets.", "Coyote Prowl! Receive $100 for putting on a good show.", "You asked your parents for money. They were feeling generous and gave you a bit extra. Collect $20.", "It is your birthday, everyone in your class sings “Happy Birthday” out of tune. Collect $10 from every player.", "A student was low-riding to a point where they gave away their Gucci belt, and gave it to you. You sell it because brands don’t mean anything. Collect $100 ", "You want to purchase a school hoodie to show off your Coyote Spirit! Pay $50. ", "At the elf auction, you got into a bid battle and won. On the negative side, you battled for quite a while. Pay $50.", "You tutor a student and they pay you out of generosity. Receive $25.", "You connect to the bluetooth speaker at every property site you own and play Youtube Rewind 2018, wasn’t a bright idea… Pay $40 per house and $115 per hotel you own.", "Your grandparent slips you some money when your parents wouldn't. Receive $100."};
+// all the community chest cards
     public static Integer[] buyPrice = {0, 60, 0, 60, 0, 200, 100, 0, 100, 120, 0, 140, 150, 140, 160, 200, 180, 0, 180, 200, 0, 220, 0, 220, 240, 200, 260, 260, 150, 280, 0, 300, 300, 0, 320, 200, 0, 350, 0, 400};
-    public static JLabel turn = new JLabel();
-    public static Integer[] money = {1500, 1500, 1500, 1500};
-    public static JLabel[] moneyLabel = new JLabel[4];
-    public static String[] name = new String[4];
-    public static Integer[] deckChance = new Integer[16];
-    public static Integer[] deckChest = new Integer[16];
+// the price each that each space is valued as, 0's are non properties
+    public static JLabel turn = new JLabel(); // label that says whos playing
+    public static Integer[] money = {1500, 1500, 1500, 1500}; // the number fo rthe money of each player
+    public static JLabel[] moneyLabel = new JLabel[4]; // the label that shows off how much money each player has
+    public static String[] name = new String[4]; // the name of each player
+    public static Integer[] deckChance = new Integer[16]; // how many cards there are in a chance deck
+    public static Integer[] deckChest = new Integer[16]; // how many cards their are in a CChest deck
     public static Integer[] getOutFree = {0, 0, 0, 0};
     // how many get out of jail free cards each person has, goes down when traded or used
     public static int playInGame = 4;
     //goes down when someone goes bankrupt, for chance cards
-    public static int[] houseTotal = {0, 0, 0, 0};
+    public static int[] houseTotal = {0, 0, 0, 0}; 
     public static int[] hotelTotal = {0, 0, 0, 0};
     // add to house total to playerturn when they upgrade, for chance cards
     public static Boolean[] bought = new Boolean[40];
-    public static Boolean[] mortgaged = new Boolean[40];
+    public static Boolean[] mortgaged = new Boolean[40]; // true false that is properties for properties
     public static Integer[] owner = new Integer[40];
     //0,1,2,3, depending on player
     public static Integer[] rentLevel = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -53,30 +56,30 @@ public class Monopoly {
         {0, 90, 0, 180, 0, 0, 270, 0, 270, 300, 0, 450, 0, 450, 500, 0, 550, 0, 550, 600, 0, 700, 0, 700, 750, 0, 800, 800, 0, 850, 0, 900, 900, 0, 1000, 0, 0, 1100, 0, 1400},
         {0, 160, 0, 320, 0, 0, 400, 0, 400, 450, 0, 625, 0, 625, 700, 0, 750, 0, 750, 800, 0, 875, 0, 875, 925, 0, 975, 975, 0, 1025, 0, 1100, 1100, 0, 1200, 0, 0, 1300, 0, 1700},
         {0, 250, 0, 450, 0, 0, 550, 0, 550, 600, 0, 750, 0, 750, 900, 0, 950, 0, 950, 1000, 0, 1050, 0, 1050, 1100, 0, 1150, 1150, 0, 1200, 0, 1275, 1275, 0, 1400, 0, 0, 1500, 0, 2000},};
-
-    public static int[] rrOwned = {0, 0, 0, 0};
-    public static int[] utilOwned = {0, 0, 0, 0};
-    public static Boolean[] bankrupt = {false, false, false, false};
-    public static Boolean[] inJail = {false, false, false, false};
-    public static Integer[] jailRolls = {0, 0, 0, 0};
+// EVERY SINGLE RENT PRICE, each row is 1 home, 2, 3,4,and a hotel
+    public static int[] rrOwned = {0, 0, 0, 0}; // how many railroads a player owns
+    public static int[] utilOwned = {0, 0, 0, 0}; // how many utilities a player owns
+    public static Boolean[] bankrupt = {false, false, false, false}; // if a player is bankrupt
+    public static Boolean[] inJail = {false, false, false, false};// determines if they are in jail
+    public static Integer[] jailRolls = {0, 0, 0, 0}; // how many rolls a person has done in jail
 
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
         HUD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         HUD.setSize(1800, 1050);
         HUD.setLayout(null);
-
+// frame setup
         for (int nameInput = 0; nameInput < 4; nameInput++) {
             do {
-                name[nameInput] = JOptionPane.showInputDialog("What is your name Player " + (nameInput + 1) + " (12 Characters Max)");
+                name[nameInput] = JOptionPane.showInputDialog("What is your name Player " + (nameInput + 1) + " (12 Characters Max)"); // name setup
                 if ((name[nameInput].length() > 12) || (name[nameInput].length() == 0)) {
-                    JOptionPane.showMessageDialog(null, "Please input a valid name");
+                    JOptionPane.showMessageDialog(null, "Please input a valid name"); // error checking
                 }
             } while ((name[nameInput].length() > 12) || (name[nameInput].length() == 0));
 
         }
         for (int playericon = 0; playericon < 4; playericon++) {
-            String[] options = {"Binder", "Mouse", "Sun G.'s", "Phone", "Soccer", "Paint"};
+            String[] options = {"Binder", "Mouse", "Sun G.'s", "Phone", "Soccer", "Paint"}; // icon selection
             int iconchoice = JOptionPane.showOptionDialog(null, "Choose a playerpiece, " + name[playericon],
                     "Click a button",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
@@ -99,19 +102,19 @@ public class Monopoly {
                 case 5:
                     player[playericon] = new JLabel(new ImageIcon("images/players/paintfix.png"));
                     break;
-            }
+            } // icon setting
             HUD.add(player[playericon]);
         }
         player[0].setBounds((855), (875), player[0].getPreferredSize().width, player[0].getPreferredSize().height);
         player[1].setBounds((895), (875), player[1].getPreferredSize().width, player[1].getPreferredSize().height);
         player[2].setBounds((855), (925), player[2].getPreferredSize().width, player[2].getPreferredSize().height);
         player[3].setBounds((895), (925), player[3].getPreferredSize().width, player[3].getPreferredSize().height);
-
+//sets the starting position for the icons
         for (int moneyicon = 0; moneyicon < 4; moneyicon++) {
             moneyLabel[moneyicon] = new JLabel(name[moneyicon] + "'s money: $" + money[moneyicon] + "");
             moneyLabel[moneyicon].setFont(new Font("Monospaced Plain", Font.PLAIN, 35));
             HUD.add(moneyLabel[moneyicon]);
-        }
+        } // sets the money for each player and sets the label
         moneyLabel[0].setBounds(1350, 110, 1000, 100);
         moneyLabel[1].setBounds(1350, 210, 1000, 100);
         moneyLabel[2].setBounds(1350, 310, 1000, 100);
