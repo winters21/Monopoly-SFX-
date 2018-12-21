@@ -7,14 +7,24 @@ package monopoly;
 // imports
 
 import java.awt.Font;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Random;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 public class Monopoly {
 
@@ -63,12 +73,14 @@ public class Monopoly {
     public static Boolean[] bankrupt = {false, false, false, false}; // if a player is bankrupt
     public static Boolean[] inJail = {false, false, false, false};// determines if they are in jail
     public static Integer[] jailRolls = {0, 0, 0, 0}; // how many rolls a person has done in jail
+    private static File audioFile = new File("music/mainmusic.wav");
 
     public static void main(String[] args) throws IOException {
         JFrame HUD = new JFrame();
         HUD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         HUD.setSize(1800, 1050);
         HUD.setLayout(null);
+        MainMusic();
 // frame setup
         for (int nameInput = 0; nameInput < 4; nameInput++) {
             do {
@@ -754,6 +766,30 @@ public class Monopoly {
                         break;
                 }
             }
+        }
+    }
+    
+        public static void Music(String filepath) { //Audio Method - Will play music (wav files) located in the music folder.
+        InputStream music;
+        try {
+            music = new FileInputStream(new File(filepath));
+            AudioStream audios = new AudioStream(music);
+            AudioPlayer.player.start(audios);
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+
+    }
+        
+        public static void MainMusic() { //this method plays a sound
+        try {
+            AudioInputStream audioin = AudioSystem.getAudioInputStream(audioFile); //the audio file must be in .wav format
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioin);
+            clip.loop(Clip.LOOP_CONTINUOUSLY); //plays the sound continuously
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
         }
     }
 
