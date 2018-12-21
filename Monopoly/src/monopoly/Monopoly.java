@@ -84,6 +84,7 @@ public class Monopoly {
 // frame setup
         for (int nameInput = 0; nameInput < 4; nameInput++) {
             do {
+                Music("music/click.wav");
                 name[nameInput] = JOptionPane.showInputDialog("What is your name Player " + (nameInput + 1) + " (12 Characters Max)"); // name setup
                 if ((name[nameInput].length() > 12) || (name[nameInput].length() == 0)) {
                     JOptionPane.showMessageDialog(null, "Please input a valid name"); // error checking
@@ -628,6 +629,7 @@ public class Monopoly {
     }
 
     public static void landedOnGoTo() { //this code is when you land on go to jail, assigns the label and makes the in jail true
+        Music("music/policesiren.wav");
         JOptionPane.showMessageDialog(null, "GO TO JAIL, DO NOT PASS GO, DO NOT COLLECT 200");
         switch (playerturn) {
             case 0:
@@ -709,6 +711,7 @@ public class Monopoly {
     }
 
     public static void landedOnRelax() { // FLAVOUR TEXT
+        Music("music/suck.wav");
         JOptionPane.showMessageDialog(null, "Ahh finally, a space that does nothing!");
 
     }
@@ -721,6 +724,7 @@ public class Monopoly {
                     "Wanna buy it?",
                     JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
+                Music("music/purchase.wav");
                 JOptionPane.showMessageDialog(null, "You bought the propety");
                 bought[space[playerturn]] = true;
                 owner[space[playerturn]] = playerturn;
