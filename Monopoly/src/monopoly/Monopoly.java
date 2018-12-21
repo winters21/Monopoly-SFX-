@@ -718,27 +718,32 @@ public class Monopoly {
 
     public static void landedOnProperty() { // this is when you land on a propety, it checks if it is mortgaged or is bought, and then makes the player pay based off of the 2d array, special code for Plaza and Caf+LC
         if (bought[space[playerturn]] == false) {
-            int reply = JOptionPane.showConfirmDialog(
-                    null,
-                    "Would you like to buy " + spacename[space[playerturn]],
-                    "Wanna buy it?",
-                    JOptionPane.YES_NO_OPTION);
-            if (reply == JOptionPane.YES_OPTION) {
-                Music("music/purchase.wav");
-                JOptionPane.showMessageDialog(null, "You bought the propety");
-                bought[space[playerturn]] = true;
-                owner[space[playerturn]] = playerturn;
-                money[playerturn] -= buyPrice[space[playerturn]];
-                moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
-                switch (space[playerturn]) {
-                    case 5:
-                    case 15:
-                    case 25:
-                    case 35:
-                        rrOwned[playerturn] += 1;
+            if (money[playerturn] >= buyPrice[space[playerturn]]) {
+                int reply = JOptionPane.showConfirmDialog(
+                        null,
+                        "Would you like to buy " + spacename[space[playerturn]],
+                        "Wanna buy it?",
+                        JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
+                    Music("music/purchase.wav");
+                    JOptionPane.showMessageDialog(null, "You bought the propety");
+                    bought[space[playerturn]] = true;
+                    owner[space[playerturn]] = playerturn;
+                    money[playerturn] -= buyPrice[space[playerturn]];
+                    moneyLabel[playerturn].setText(name[playerturn] + "'s money: $" + money[playerturn] + "");
+                    switch (space[playerturn]) {
+                        case 5:
+                        case 15:
+                        case 25:
+                        case 35:
+                            rrOwned[playerturn] += 1;
+                    }
+                } else if (reply == JOptionPane.NO_OPTION) {
+                    JOptionPane.showMessageDialog(null, "You did not buy the propety");
                 }
-            } else if (reply == JOptionPane.NO_OPTION) {
-                JOptionPane.showMessageDialog(null, "You did not buy the propety");
+            } else {
+                JOptionPane.showMessageDialog(null, "You do not have enough money to buy this");
+
             }
         } else if (bought[space[playerturn]] == true) {
             if (owner[space[playerturn]] == playerturn) {
@@ -772,8 +777,8 @@ public class Monopoly {
             }
         }
     }
-    
-        public static void Music(String filepath) { //Audio Method - Will play music (wav files) located in the music folder.
+
+    public static void Music(String filepath) { //Audio Method - Will play music (wav files) located in the music folder.
         InputStream music;
         try {
             music = new FileInputStream(new File(filepath));
@@ -785,8 +790,8 @@ public class Monopoly {
         }
 
     }
-        
-        public static void MainMusic() { //this method plays a sound
+
+    public static void MainMusic() { //this method plays a sound
         try {
             AudioInputStream audioin = AudioSystem.getAudioInputStream(audioFile); //the audio file must be in .wav format
             Clip clip = AudioSystem.getClip();
